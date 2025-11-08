@@ -1,11 +1,20 @@
 @use '@styles/utility' as *
 @use '@styles/variables' as *
+
 .projectCardContainer
   grid-template-columns: repeat(3, 1fr)
   gap: 20px
   margin: auto
   width: 95%
   margin: 2rem 0
+
+.projectCardTitle
+  font-size: 1.5rem
+  font-weight: 700
+  color: rgba(226, 232, 240, 1)
+  text-align: center
+  margin-bottom: 1rem
+
 .projectCard
   display: flex
   flex-direction: column
@@ -47,16 +56,24 @@
   justify-content: center
   gap: 10px
   flex-wrap: wrap
+
 .projectCardLink
-  background-color: #6EDB93
-  color: Black
-  padding: 6px
+  background: rgba(15, 23, 42, 1)
+  color: white
+  padding: 10px 20px
   display: flex
   align-items: center
   justify-content: center
   text-decoration: none
   margin: 5px
-  border-radius: 5px
+  border-radius: 10px
+  font-weight: 600
+  font-size: 0.95rem
+  border: 2px solid transparent
+  background-image: linear-gradient(rgba(15, 23, 42, 1), rgba(15, 23, 42, 1)), linear-gradient(135deg, rgba(99, 102, 241, 1), rgba(139, 92, 246, 1), rgba(236, 72, 153, 1))
+  background-origin: border-box
+  background-clip: padding-box, border-box
+  gap: 8px
 
 .zIndexed
   position: relative

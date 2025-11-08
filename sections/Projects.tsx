@@ -1,7 +1,7 @@
 import React from "react";
 import ProjectCard from "@components/ProjectCard";
 import SectionCard from "@components/SectionCard";
-import { projectData } from "@sections/me";
+import { projectData } from "@sections/Me";
 import BgTitle from "@components/BgTitle";
 import containerStyle from "@styles/ProjectCard.module.sass";
 
