@@ -51,9 +51,7 @@ const ProjectCard = ({ project }: Props) => {
                   href={link.path}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${styles.projectCardLink} ${
-                    link.style?.zIndex ? styles.zIndexed : ""
-                  }`}
+                  className={styles.projectCardLink}
                 >
                   {link.icon}
                   {link.name}

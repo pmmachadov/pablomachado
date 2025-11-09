@@ -32,12 +32,12 @@ import CustomIcon from "@components/CustomIcon";
 // THEMES
 
 export const lightTheme = {
-  color: "#293241",
-  backgroundColor: "#f0efeb",
+  color: "#1e293b",
+  backgroundColor: "#f8fafc",
 };
 export const darkTheme = {
-  color: "#6EDB93",
-  backgroundColor: "#0b132b",
+  color: "#e0e7ff",
+  backgroundColor: "#0f172a",
 };
 // NAVIGATION
 

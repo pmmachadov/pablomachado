@@ -2,14 +2,11 @@
 @use '@styles/variables' as *
 
 .skillCardWrapper
-  display: grid
-  justify-items: center
-  grid-template-columns: 1fr
-  gap: 0 0.25rem
-  @media screen and (min-width: 600px)
-    grid-template-columns: repeat(2, 1fr)
-  @media screen and (min-width: 750px)
-    grid-template-columns: repeat(3, 1fr)
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  margin: 0 auto
 
 .skillContainer
   p

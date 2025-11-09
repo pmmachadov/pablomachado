@@ -6,7 +6,7 @@ import {
   skillcard_Languages,
   skillcard_Styles,
   skillcard_Frameworks,
-} from "@sections/me";
+} from "@sections/Me";
 import BgTitle from "@components/BgTitle";
 
 const Skills = () => {
