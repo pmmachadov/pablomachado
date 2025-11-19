@@ -11,7 +11,7 @@ class MyDocument extends Document {
                     <link rel="preconnect" href="https://fonts.googleapis.com" />
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
                     {/* Theme color */}
-                    <meta name="theme-color" content="#000000" />
+                    <meta name="robots" content="index, follow" />
                     {/* SEO meta tags */}
                     <meta property="og:title" content="Pablo Machado – Full Stack Developer" />
                     <meta property="og:description" content="Portfolio de Pablo Machado, especialista en desarrollo web full‑stack." />
