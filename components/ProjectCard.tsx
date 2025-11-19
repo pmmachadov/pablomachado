@@ -1,19 +1,11 @@
 import React from "react";
-
+import Link from "next/link";
 import styles from "@styles/ProjectCard.module.sass";
 import Image from "next/image";
+import { ProjectCardType } from "types";
 
 interface Props {
-  project: {
-    title: string;
-    image: string;
-    links: {
-      name: string;
-      path: string;
-      icon?: React.ReactNode;
-      style?: React.CSSProperties;
-    }[];
-  };
+  project: ProjectCardType;
 }
 
 const ProjectCard = ({ project }: Props) => {
@@ -36,6 +28,11 @@ const ProjectCard = ({ project }: Props) => {
         <div className={styles.projectCardDetails}>
           <div className={styles.projectCardLinkContainer}>
             {" "}
+            {project.slug && (
+              <Link href={`/projects/${project.slug}`} className={styles.projectCardLink}>
+                Case Study
+              </Link>
+            )}
             {project.links.map(
               (
                 link: {

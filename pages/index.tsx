@@ -10,6 +10,7 @@ import Intro from '@sections/Intro';
 import Navbar from '@components/Navbar';
 import Skills from '@sections/Skills';
 import Projects from '@sections/Projects';
+import Blog from '@sections/Blog';
 import Contact from '@sections/Contact';
 import Footer from '@components/Footer';
 
@@ -48,6 +49,7 @@ const Home: NextPage = () => {
             <Intro />
             <Skills />
             <Projects />
+            <Blog />
             <Contact />
           </main>
 

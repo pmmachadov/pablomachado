@@ -3,6 +3,12 @@ import { ReactElement } from "react";
 export interface ProjectCardType {
   title: string;
   image: string;
+  slug?: string; // For internal routing
+  description?: string; // Short description for the card
+  longDescription?: string; // Long description for the case study
+  technologies?: string[];
+  challenges?: string;
+  solutions?: string;
   links: {
     name: string;
     path: string;
@@ -10,6 +16,15 @@ export interface ProjectCardType {
     id?: string;
     style?: React.CSSProperties;
   }[];
+}
+
+export interface BlogPostType {
+  title: string;
+  excerpt: string;
+  date: string;
+  slug: string;
+  content: string; // Simple markdown or HTML string for now
+  tags: string[];
 }
 
 export interface NavLinkType {
@@ -53,15 +68,5 @@ export interface ImageComponentProps {
 }
 
 export interface Props {
-  project: {
-    title: string;
-    image: string;
-    links: {
-      name: string;
-      path: string;
-      icon?: ReactElement;
-      id?: string;
-      style?: React.CSSProperties;
-    }[];
-  };
+  project: ProjectCardType;
 }
