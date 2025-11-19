@@ -10,12 +10,41 @@ import BgTitle from '@components/BgTitle';
 const Contact = () => {
   const { themeStyle } = useContext(ThemeContext);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errors, setErrors] = useState({ name: '', email: '', message: '' });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormStatus('submitting');
 
     const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const message = formData.get('message') as string;
+
+    // Validation
+    const newErrors = { name: '', email: '', message: '' };
+    let hasError = false;
+
+    if (!name) {
+      newErrors.name = 'Please enter your name';
+      hasError = true;
+    }
+    if (!email) {
+      newErrors.email = 'Please enter your email address';
+      hasError = true;
+    }
+    if (!message) {
+      newErrors.message = 'Please enter a message';
+      hasError = true;
+    }
+
+    if (hasError) {
+      setErrors(newErrors);
+      return;
+    }
+    setErrors({ name: '', email: '', message: '' });
+
+    setFormStatus('submitting');
     const data = new FormData(form);
 
     try {
@@ -58,41 +87,53 @@ const Contact = () => {
             <ClipCopy copy='pmmachadov@gmail.com' theme={themeStyle} />
           </div>
 
-          <form onSubmit={handleSubmit} className={styles.formContainer}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              required
-              className={styles.appleInput}
-              style={{
-                background: themeStyle.color === '#e0e7ff' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)',
-                color: themeStyle.color
-              }}
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              required
-              className={styles.appleInput}
-              style={{
-                background: themeStyle.color === '#e0e7ff' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)',
-                color: themeStyle.color
-              }}
-            />
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              rows={5}
-              required
-              className={styles.appleInput}
-              style={{
-                resize: 'vertical',
-                background: themeStyle.color === '#e0e7ff' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)',
-                color: themeStyle.color
-              }}
-            />
+          <form onSubmit={handleSubmit} className={styles.formContainer} noValidate>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                className={styles.appleInput}
+                style={{
+                  background: themeStyle.color === '#e0e7ff' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)',
+                  color: themeStyle.color,
+                  borderColor: errors.name ? '#ef4444' : ''
+                }}
+              />
+              {errors.name && <span style={{ color: '#ef4444', fontSize: '0.85rem', marginLeft: '4px' }}>{errors.name}</span>}
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                className={styles.appleInput}
+                style={{
+                  background: themeStyle.color === '#e0e7ff' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)',
+                  color: themeStyle.color,
+                  borderColor: errors.email ? '#ef4444' : ''
+                }}
+              />
+              {errors.email && <span style={{ color: '#ef4444', fontSize: '0.85rem', marginLeft: '4px' }}>{errors.email}</span>}
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <textarea
+                name="message"
+                placeholder="Your Message"
+                rows={5}
+                className={styles.appleInput}
+                style={{
+                  resize: 'vertical',
+                  background: themeStyle.color === '#e0e7ff' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)',
+                  color: themeStyle.color,
+                  borderColor: errors.message ? '#ef4444' : ''
+                }}
+              />
+              {errors.message && <span style={{ color: '#ef4444', fontSize: '0.85rem', marginLeft: '4px' }}>{errors.message}</span>}
+            </div>
+
             <button
               type="submit"
               disabled={formStatus === 'submitting' || formStatus === 'success'}
