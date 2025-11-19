@@ -21,40 +21,31 @@ const Navbar = ({ links }: Props) => {
     setTheme(checked ? ThemeOptions.Light : ThemeOptions.Dark);
   };
 
-  const handleClick = (id: string) => () => {
-    const section = id.replace('#', '');
-    const el = document.getElementById(section);
-    if (el) {
-      el.scrollIntoView({
-        block: 'start',
-        behavior: 'smooth',
-      });
-    }
-  };
+
 
   return (
     <header>
-      <nav className={ styles.navbar } style={ themeStyle }>
-        { links.map((l, i) => {
+      <nav className={styles.navbar} style={themeStyle}>
+        {links.map((l, i) => {
           return (
-            <span className={ styles.linkContainer } key={ l.name }>
+            <span className={styles.linkContainer} key={l.name}>
               {/* <NavDotTracker
                 visible={l.path === `#${location}`}
                 color={themeStyle.color}
                 aria-hidden={true}
               /> */}
-              <button
-                onClick={ handleClick(l.path) }
-                aria-label={ l.name }
-                className={ styles.link }
-                data-navitem={ l.name }
+              <a
+                href={l.path}
+                aria-label={l.name}
+                className={styles.link}
+                data-navitem={l.name}
               >
-                { l.icon }
-              </button>
+                {l.icon}
+              </a>
             </span>
           );
-        }) }
-        <SwitchBtn onChange={ handleChange } color={ themeStyle.color } />
+        })}
+        <SwitchBtn onChange={handleChange} color={themeStyle.color} />
       </nav>
     </header>
   );

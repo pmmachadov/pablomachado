@@ -5,17 +5,7 @@ import styles from '@styles/Intro.module.sass';
 import BgTitle from '@components/BgTitle';
 import PersonalImage from '@components/PersonalImage';
 
-
 const Intro = () => {
-  function scrollToContact(e: React.MouseEvent<HTMLAnchorElement>) {
-    e.preventDefault();
-    const contact = document.getElementById('contact');
-    contact?.scrollIntoView({
-      block: 'start',
-      behavior: 'smooth',
-    });
-  }
-
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -43,7 +33,7 @@ const Intro = () => {
         viewport={{ once: true }}
       >
         <BgTitle title='ABOUT' />
-        <div>
+        <div className={styles.introContainer}>
           <motion.div variants={itemVariants}>
             <PersonalImage
               src='/assets/images/personalPhoto.jpg'
@@ -51,18 +41,21 @@ const Intro = () => {
               className={styles.myPhoto} />
           </motion.div>
 
-          <motion.p variants={itemVariants}>
-            <span
-              className={styles.myName}
-              style={{ fontFamily: 'Archivo Black, sans-serif' }}>
-              PABLO MACHADO
-            </span> Professional in the digital sector within the
-            <br /><b>Full Stack Web Development</b>. <br /> My skills include: Attention to detail and quality. Planning and organization. Learning and application of knowledge.
-            Did I just pique your interest? Let&apos;s{' '}
-            <a onClick={scrollToContact}>
-              <b style={{ textDecoration: 'underline', cursor: 'pointer' }}>chat </b>💬
-            </a>{' '}
-          </motion.p>
+          <motion.div variants={itemVariants} className={styles.textContent}>
+            <p>
+              <span
+                className={styles.myName}
+                style={{ fontFamily: 'Archivo Black, sans-serif' }}>
+                PABLO MACHADO
+              </span>
+              Professional in the digital sector within the
+              <br /><b>Full Stack Web Development</b>. <br /> My skills include: Attention to detail and quality. Planning and organization. Learning and application of knowledge.
+              Did I just pique your interest? Let&apos;s{' '}
+              <a href="#contact" className={styles.chatLink}>
+                <span className={styles.chatLinkText}>chat </span>💬
+              </a>{' '}
+            </p>
+          </motion.div>
         </div>
       </motion.div>
     </SectionCard>

@@ -89,7 +89,9 @@ const Contact = () => {
 
           <form onSubmit={handleSubmit} className={styles.formContainer} noValidate>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <label htmlFor="name" className={styles.srOnly}>Name</label>
               <input
+                id="name"
                 type="text"
                 name="name"
                 placeholder="Your Name"
@@ -104,7 +106,9 @@ const Contact = () => {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <label htmlFor="email" className={styles.srOnly}>Email</label>
               <input
+                id="email"
                 type="email"
                 name="email"
                 placeholder="Your Email"
@@ -119,7 +123,9 @@ const Contact = () => {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <label htmlFor="message" className={styles.srOnly}>Message</label>
               <textarea
+                id="message"
                 name="message"
                 placeholder="Your Message"
                 rows={5}
