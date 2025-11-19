@@ -13,9 +13,10 @@ const SectionCard = ({ id, title, children, page }: Props) => {
   const ref = useRef<HTMLElement>(null);
 
   return (
-    <section id={ id } title={ id } className={ styles.layoutContainer } ref={ ref }>
-      <div className={ styles.layoutContent }>{ children }</div>
-      { page && <PageCount count={ page } /> }
+    <section id={id} title={id} className={styles.layoutContainer} ref={ref}>
+      {title && <h2 className={styles.title}>{title}</h2>}
+      <div className={styles.layoutContent}>{children}</div>
+      {page && <PageCount count={page} />}
     </section>
   );
 };
