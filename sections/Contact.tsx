@@ -58,19 +58,16 @@ const Contact = () => {
             <ClipCopy copy='pmmachadov@gmail.com' theme={themeStyle} />
           </div>
 
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '500px', margin: '0 auto', width: '100%' }}>
+          <form onSubmit={handleSubmit} className={styles.formContainer}>
             <input
               type="text"
               name="name"
               placeholder="Your Name"
               required
+              className={styles.appleInput}
               style={{
-                padding: '1rem',
-                borderRadius: '8px',
-                border: 'none',
-                background: themeStyle.color === '#e0e7ff' ? '#1e293b' : '#e2e8f0',
-                color: themeStyle.color,
-                fontFamily: 'inherit'
+                background: themeStyle.color === '#e0e7ff' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)',
+                color: themeStyle.color
               }}
             />
             <input
@@ -78,13 +75,10 @@ const Contact = () => {
               name="email"
               placeholder="Your Email"
               required
+              className={styles.appleInput}
               style={{
-                padding: '1rem',
-                borderRadius: '8px',
-                border: 'none',
-                background: themeStyle.color === '#e0e7ff' ? '#1e293b' : '#e2e8f0',
-                color: themeStyle.color,
-                fontFamily: 'inherit'
+                background: themeStyle.color === '#e0e7ff' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)',
+                color: themeStyle.color
               }}
             />
             <textarea
@@ -92,29 +86,17 @@ const Contact = () => {
               placeholder="Your Message"
               rows={5}
               required
+              className={styles.appleInput}
               style={{
-                padding: '1rem',
-                borderRadius: '8px',
-                border: 'none',
-                background: themeStyle.color === '#e0e7ff' ? '#1e293b' : '#e2e8f0',
-                color: themeStyle.color,
-                fontFamily: 'inherit',
-                resize: 'vertical'
+                resize: 'vertical',
+                background: themeStyle.color === '#e0e7ff' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)',
+                color: themeStyle.color
               }}
             />
             <button
               type="submit"
               disabled={formStatus === 'submitting' || formStatus === 'success'}
-              style={{
-                padding: '1rem',
-                borderRadius: '8px',
-                border: 'none',
-                background: '#3b82f6',
-                color: 'white',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                opacity: formStatus === 'submitting' ? 0.7 : 1
-              }}
+              className={styles.appleButton}
             >
               {formStatus === 'submitting' ? 'Sending...' : formStatus === 'success' ? 'Message Sent!' : formStatus === 'error' ? 'Error! Try Again' : 'Send Message'}
             </button>
