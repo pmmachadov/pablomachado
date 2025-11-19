@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import ProjectCard from "@components/ProjectCard";
 import SectionCard from "@components/SectionCard";
 import { projectData } from "@sections/Me";
@@ -8,8 +9,19 @@ import styles from "@styles/ProjectCard.module.sass";
 const Projects = () => {
   // grid layout handled by CSS module `cardsGrid`
 
-  const workTitleStyle = {
-    marginTop: "-20rem",
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0 }
   };
 
   return (
@@ -18,11 +30,19 @@ const Projects = () => {
         <div className={styles.workTitle}>
           <BgTitle title="WORK" />
         </div>
-        <div className={styles.cardsGrid}>
+        <motion.div
+          className={styles.cardsGrid}
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
           {projectData.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+            <motion.div key={project.title} variants={item}>
+              <ProjectCard project={project} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </SectionCard>
   );
