@@ -68,10 +68,8 @@ const Blog = () => {
                 <Link href="/blog-list" className={styles.viewAllLink}>
                     <motion.button
                         className={styles.viewAllButton}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
                     >
-                        Ver todos los artículos →
+                        See all articles →
                     </motion.button>
                 </Link>
             </div>

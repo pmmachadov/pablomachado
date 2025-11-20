@@ -8,6 +8,7 @@ import {
   faDatabase,
   faBolt,
   faPaintBrush,
+  faNewspaper,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faReact,
@@ -72,6 +73,17 @@ export const links: NavLinkType[] = [
       <FontAwesomeIcon
         icon={faWindowMaximize}
         title="scroll to section: projects"
+        size="lg"
+      />
+    ),
+  },
+  {
+    name: "blog",
+    path: "#blog",
+    icon: (
+      <FontAwesomeIcon
+        icon={faNewspaper}
+        title="scroll to section: blog"
         size="lg"
       />
     ),

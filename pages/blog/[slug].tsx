@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { blogPosts, darkTheme } from '@sections/Me';
 import styles from '@styles/BlogPost.module.sass';
-import ReactMarkdown from 'react-markdown';
+import React from 'react';
 
 interface Props {
     slug: string;
@@ -26,6 +26,35 @@ const BlogPost = ({ slug }: Props) => {
         return <div>Post not found</div>;
     }
 
+    // Simple content renderer
+    const renderContent = () => {
+        try {
+            const paragraphs = post.content.split('\n\n');
+
+            return paragraphs.map((para, idx) => {
+                const trimmed = para.trim();
+
+                if (!trimmed) return null;
+
+                // Process inline formatting
+                const processedText = trimmed
+                    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/`(.+?)`/g, '<code style="background: rgba(255,255,255,0.1); padding: 0.2em 0.4em; border-radius: 3px;">$1</code>');
+
+                return (
+                    <p
+                        key={idx}
+                        dangerouslySetInnerHTML={{ __html: processedText }}
+                        style={{ marginBottom: '1.5rem', lineHeight: '1.8' }}
+                    />
+                );
+            });
+        } catch (error) {
+            console.error('Error rendering content:', error);
+            return <p>Error loading content</p>;
+        }
+    };
+
     return (
         <div style={{
             backgroundColor: themeStyle.backgroundColor,
@@ -33,7 +62,7 @@ const BlogPost = ({ slug }: Props) => {
             minHeight: '100vh',
             width: '100%',
             overflowX: 'hidden',
-            fontFamily: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+            fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
             position: 'relative',
             zIndex: 1
         }}>
@@ -61,28 +90,7 @@ const BlogPost = ({ slug }: Props) => {
                 </header>
 
                 <article className={styles.content}>
-                    <ReactMarkdown
-                        components={{
-                            a: ({ node, href, children, ...props }) => (
-                                <a
-                                    href={href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        color: '#60a5fa',
-                                        textDecoration: 'underline',
-                                        fontFamily: 'Poppins, sans-serif',
-                                        transition: 'color 0.2s ease'
-                                    }}
-                                    {...props}
-                                >
-                                    {children}
-                                </a>
-                            ),
-                        }}
-                    >
-                        {post.content}
-                    </ReactMarkdown>
+                    {renderContent()}
                 </article>
             </main>
         </div>
