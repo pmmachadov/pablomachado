@@ -1,5 +1,7 @@
 import { ImageComponentProps } from "types";
 
+import Image from 'next/image';
+
 const PersonalImage: React.FC<ImageComponentProps> = ({ src = '/assets/images/personalPhoto.jpg', alt, className }) => {
     return (
         <div style={{
@@ -7,21 +9,21 @@ const PersonalImage: React.FC<ImageComponentProps> = ({ src = '/assets/images/pe
             height: '200px',
             borderRadius: '2rem',
             overflow: 'hidden',
-            float: 'right',
-            margin: '3rem',
-            marginTop: 'auto'
+            position: 'relative',
+            flexShrink: 0
         }}>
-            <img
-                src={ src }
-                alt={ alt }
-                className={ className }
-                style={ {
-                    width: '100%',
-                    height: '100%',
+            <Image
+                src={src}
+                alt={alt || "Pablo Machado"}
+                className={className}
+                fill
+                sizes="200px"
+                priority
+                style={{
                     objectFit: 'cover',
                     objectPosition: 'center center',
                     transform: 'scale(1.4)'
-                } }
+                }}
             />
         </div>
     );

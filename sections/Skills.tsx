@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import SectionCard from "@components/SectionCard";
 import SkillCard from "@components/SkillCard";
 import styles from "@styles/Skills.module.sass";
@@ -18,13 +19,18 @@ const Skills = () => {
   ];
 
   return (
-    <SectionCard id="skills" title="TOOLS" page="SKILLS">
-      <>
-        <BgTitle title="TOOLS" />
+    <SectionCard id="skills" title="SKILLS" page="SKILLS">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <BgTitle title="SKILLS" />
         <div className={styles.skillCardWrapper}>
           <SkillCard items={allSkills} itemHeight={85} />
         </div>
-      </>
+      </motion.div>
     </SectionCard>
   );
 };

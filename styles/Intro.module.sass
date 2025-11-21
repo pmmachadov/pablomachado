@@ -2,11 +2,13 @@
 @use '@styles/variables' as *
 
 .introContainer
-  @extend .flex-column
+  @extend .flex-row
   @extend .center-flex-item
-  gap: 1.5rem
+  gap: 2rem
   width: 100%
-  // text-align: center
+  flex-wrap: wrap
+  align-items: flex-start
+  justify-content: center
 
   img
     border-radius: 50%
@@ -21,11 +23,13 @@
     &:hover
       cursor: pointer
 
-  @media screen and (min-width: 500px)
-    text-align: left
-
   @media screen and (min-width: 750px)
-    flex-direction: row
+    flex-wrap: nowrap
+    justify-content: space-between
+
+.textContent
+  flex: 1
+  min-width: 300px
 
 .hello
   font-size: 1.5rem
@@ -37,6 +41,21 @@
   // margin: 15px 0
   line-height: 3.8rem
   display: block
+  letter-spacing: 0.02em
+  margin-bottom: 1rem
   @media screen and (min-width: 500px)
     // display: inline
 
+.chatLink
+  text-decoration: none
+  cursor: pointer
+  display: inline-block
+  transition: transform 0.2s ease
+  color: inherit
+
+  &:hover
+    transform: translateY(-2px)
+
+.chatLinkText
+  font-weight: bold
+  text-decoration: underline
