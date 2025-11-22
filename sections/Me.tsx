@@ -92,14 +92,14 @@ export const links: NavLinkType[] = [
 
 export const socialLinks: SocialLinkType[] = [
   {
-    icon: <FontAwesomeIcon icon={faGithub} title="github" size="2x" />,
+    icon: <FontAwesomeIcon icon={faGithub} title="github" size="4x" />,
     link: "https://github.com/pmmachadov",
     title: "github",
     target: "_blank",
     rel: "noopener noreferrer",
   },
   {
-    icon: <FontAwesomeIcon icon={faLinkedin} title="linkedIn" size="2x" />,
+    icon: <FontAwesomeIcon icon={faLinkedin} title="linkedIn" size="4x" />,
     link: "https://www.linkedin.com/in/pmmachadov/?locale=en_US",
     title: "linkedIn",
     target: "_blank",
