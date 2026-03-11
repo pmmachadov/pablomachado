@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useMemo, useState } from 'react';
+import { Dispatch, SetStateAction, useMemo, useState } from 'react';
 import ThemeContext, { ThemeOptions } from '@contexts/ThemeContext';
 import NavLocationContext from '@contexts/NavLocationContext';
 import { lightTheme, darkTheme, links } from '@sections/Me';
@@ -27,7 +27,8 @@ const Home: NextPage = () => {
   });
   const [location, setLocation] = useState('');
 
-  const handleSetTheme = (newTheme: ThemeOptions) => {
+  const handleSetTheme: Dispatch<SetStateAction<ThemeOptions>> = (action) => {
+    const newTheme = typeof action === 'function' ? action(theme) : action;
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
   };
