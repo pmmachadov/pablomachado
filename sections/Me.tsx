@@ -112,6 +112,7 @@ export const projectData: ProjectCardType[] = [
   {
     title: "File Tree Visualizer",
     image: "/assets/images/file-tree.jpg",
+    description: "Developer tool that renders any directory structure as an interactive visual tree. Solves the need to quickly understand project layouts at a glance. Built with JavaScript DOM manipulation; designed and implemented the full parsing and rendering logic from scratch.",
     links: [
       {
         name: "Live Project",
@@ -126,8 +127,9 @@ export const projectData: ProjectCardType[] = [
     ],
   },
   {
-    title: "Pokeom Card Game",
+    title: "Pokémon Card Game",
     image: "/assets/images/Pokemon-Charizard-Wallpaper.png",
+    description: "Browser-based memory card game that fetches live Pokémon data from the PokéAPI. Solves the challenge of building engaging stateful UIs without a framework. Built with JavaScript and async/await; implemented flip/match logic, score tracking, and API integration.",
     links: [
       {
         name: "Live Project",
@@ -142,8 +144,9 @@ export const projectData: ProjectCardType[] = [
     ],
   },
   {
-    title: "Pokedex",
+    title: "Pokédex",
     image: "/assets/images/pokemon-go.png",
+    description: "Interactive Pokédex that fetches and displays stats, types, and sprites from the PokéAPI. Solves the need for a fast searchable reference for 900+ Pokémon entries. Built with JavaScript; designed the search, filter, and detail view entirely from scratch.",
     links: [
       {
         name: "Live Project",
@@ -160,6 +163,7 @@ export const projectData: ProjectCardType[] = [
   {
     title: "Tic Tac Toe",
     image: "/assets/images/tic-tac-toe.webp",
+    description: "Classic two-player game with win detection, draw handling, and board reset. Solves implementing a complete game state machine in pure JavaScript. Built with vanilla JS and CSS Grid; developed the win-condition algorithm and turn management.",
     links: [
       {
         name: "Live Project",
@@ -174,8 +178,9 @@ export const projectData: ProjectCardType[] = [
     ],
   },
   {
-    title: "Connect four",
+    title: "Connect Four",
     image: "/assets/images/connect-four.webp",
+    description: "Fully playable Connect Four with column-drop mechanics and win detection. Solves rendering a dynamic grid and detecting four-in-a-row in all directions. Built with JavaScript and CSS Grid; implemented the drop logic and directional win-check algorithm.",
     links: [
       {
         name: "Live Project",
@@ -192,6 +197,7 @@ export const projectData: ProjectCardType[] = [
   {
     title: "Super-Flashcards",
     image: "/assets/images/flashcardsimage.jpg",
+    description: "Spaced-repetition flashcard app that lets users create, study, and score custom decks. Solves the need for a personalised study tool without relying on third-party services. Built with React and TypeScript; architected component state, deck CRUD operations, and the study-session scoring flow.",
     links: [
       {
         name: "Live Project",
@@ -207,8 +213,9 @@ export const projectData: ProjectCardType[] = [
     ],
   },
   {
-    title: "Super-quiz",
+    title: "Super-Quiz",
     image: "/assets/images/questionsjpg.jpg",
+    description: "Timed multiple-choice quiz app with score tracking and a results summary screen. Solves keeping users engaged with immediate feedback and a clear final score. Built with JavaScript; implemented question shuffling, countdown timer, and local-storage score persistence.",
     links: [
       {
         name: "Live Project",

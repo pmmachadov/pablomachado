@@ -2,58 +2,53 @@
 @use '@styles/variables' as *
 
 .emailCopyIcon
-  // display: none
-  // opacity: 0
-  transition: opacity $interact-transition
-  margin-left: 1rem
+  transition: transform $interact-transition
+  margin-left: 0.6rem
+  opacity: 0.6
   @extend .layer-middle
-  @media screen and (max-width: 500px)
-    display: none
 
 .fillbar
-  position: absolute
-  left: 0
-  top: 0
-  width: 0
-  height: 100%
-  transition: width $interact-transition
-  transform-origin: left
-  @extend .layer-bottom
+  display: none
 
 .emailContainer
   position: relative
   font-size: 0.95rem
   font-weight: $bold-text
-  padding: 0.5rem 0
+  padding: 0.65rem 1.25rem
   width: 100%
   max-width: 375px
-  outline: 1px solid
   order: 2
   align-self: center
-  border: none
-  background-color: transparent
+  border: 1px solid rgba(99, 102, 241, 0.35)
+  border-radius: 10px
+  background: rgba(99, 102, 241, 0.06)
   color: inherit
+  cursor: pointer
+  transition: all 0.2s ease
   @extend .flex-row
   @extend .center-flex-item
-  @extend .active-link
   @extend .layer-middle
   @media screen and (min-width: 500px)
     font-size: $base-text
 
-// .emailContainer:hover
-//   .emailCopyIcon
-//     opacity: 1
-//   .fillbar
-//     width: 100%
+  &:hover
+    background: rgba(99, 102, 241, 0.14)
+    border-color: rgba(99, 102, 241, 0.6)
+
+    .emailCopyIcon
+      transform: scale(1.15)
+      opacity: 1
 
 .clipboardMessage
   order: 1
   text-align: center
   margin: 0
+  font-size: 0.85rem
+  color: rgba(99, 102, 241, 0.9)
   z-index: 100
 
 .messageEmailWrapper
-  gap: 0 1rem
+  gap: 0.25rem 1rem
   @extend .flex-column
   @extend .center-flex-item
 

@@ -7,6 +7,7 @@ interface Props {
   project: {
     title: string;
     image: string;
+    description?: string;
     links: {
       name: string;
       path: string;
@@ -34,7 +35,10 @@ const ProjectCard = ({ project }: Props) => {
           </div>
         )}
         <div className={styles.projectCardDetails}>
-          <div className={styles.projectCardLinkContainer}>
+            {project.description && (
+              <p className={styles.projectDescription}>{project.description}</p>
+            )}
+            <div className={styles.projectCardLinkContainer}>
             {" "}
             {project.links.map(
               (
@@ -58,8 +62,8 @@ const ProjectCard = ({ project }: Props) => {
                 </a>
               )
             )}
+            </div>
           </div>
-        </div>
       </div>
     </article>
   );

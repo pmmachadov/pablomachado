@@ -45,13 +45,21 @@ const Intro = () => {
             <h1 className={styles.myName} style={{ fontFamily: 'Archivo Black, sans-serif' }}>
               PABLO MACHADO
             </h1>
+            <p className={styles.jobTitle}>
+              Frontend / Full-Stack Web Developer
+            </p>
+            <p className={styles.stack}>
+              React · TypeScript · Node.js
+            </p>
+            <p className={styles.availability}>
+              📍 Based in Spain &nbsp;|&nbsp; 🌐 Open to remote international roles in English
+            </p>
             <p>
-              Professional in the digital sector within the
+              I build performant, accessible web applications with attention to
+              detail and clean code. Experienced across the full stack — from
+              interactive React UIs to Node.js APIs and SQL/NoSQL databases.
               <br />
-              <b>Full Stack Web Development</b>. <br />
-              My skills include: Attention to detail and quality. Planning and organization. Learning and application of knowledge.
-              <br />
-              Did I just pique your interest? Let{' '}
+              Did I pique your interest? Let&apos;s{' '}
               <a href="#contact" className={styles.chatLink}>
                 <span className={styles.chatLinkText}>chat </span>💬
               </a>

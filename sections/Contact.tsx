@@ -79,10 +79,8 @@ const Contact = () => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           <div>
             <p className={styles.articleDescription}>
-              {/* change your contact description */}
-              Looking for an awesome <b>Full-Stack Developer</b>?<br></br> I&apos;m{' '}
-              <b>available</b> and looking to mingle! Hit me up and let&apos;s see
-              if we&apos;re a match.
+              I&apos;m currently <b>open to remote frontend or full-stack opportunities</b>.<br />
+              Feel free to reach out for roles, freelance work, or technical interviews.
             </p>
             <ClipCopy copy='pmmachadov@gmail.com' theme={themeStyle} />
           </div>
