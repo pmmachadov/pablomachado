@@ -3,6 +3,7 @@ import { ReactElement } from "react";
 export interface ProjectCardType {
   title: string;
   image: string;
+  description?: string;
   links: {
     name: string;
     path: string;

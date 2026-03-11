@@ -6,10 +6,11 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 interface Props {
   onChange: (checked: boolean) => void;
   color?: string;
+  initialChecked?: boolean;
 }
 
-const SwitchBtn = ({ onChange, color }: Props) => {
-  const [isChecked, setIsChecked] = useState(false);
+const SwitchBtn = ({ onChange, color, initialChecked = false }: Props) => {
+  const [isChecked, setIsChecked] = useState(initialChecked);
 
   function handleChange (checked: boolean) {
     setIsChecked(checked);

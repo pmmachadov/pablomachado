@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Navbar = ({ links }: Props) => {
-  const { setTheme, themeStyle } = useContext(ThemeContext);
+  const { theme, setTheme, themeStyle } = useContext(ThemeContext);
   // const { location } = useContext(NavLocationContext);
 
   const handleChange = (checked: boolean) => {
@@ -45,7 +45,7 @@ const Navbar = ({ links }: Props) => {
             </span>
           );
         })}
-        <SwitchBtn onChange={handleChange} color={themeStyle.color} />
+        <SwitchBtn onChange={handleChange} color={themeStyle.color} initialChecked={theme === ThemeOptions.Light} />
       </nav>
     </header>
   );
