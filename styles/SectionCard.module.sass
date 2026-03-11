@@ -10,6 +10,10 @@
   transition: background-color $theme-transition
   @extend .flex-column
   @extend .center-flex-item
+  border-top: 1px solid rgba(255, 255, 255, 0.05)
+
+  &:first-of-type
+    border-top: none
 
 .shuffleTitle
   font-size: $heading-title
@@ -18,8 +22,9 @@
 
 .layoutContent
   width: 100%
-  padding: 1.5rem 0rem
+  padding: 1.5rem 1.5rem
 
   @media screen and (min-width: 500px)
     max-width: 1200px
+    padding: 1.5rem 2rem
     margin: auto

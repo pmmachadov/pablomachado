@@ -30,10 +30,7 @@ const ClipCopy = ({ copy, theme }: Props) => {
     }
   };
 
-  const emailContainerStyle: React.CSSProperties = {
-    backgroundColor: theme.color,
-    color: theme.backgroundColor,
-  };
+  const emailContainerStyle: React.CSSProperties = {};
 
   const clipboardMessageStyle: React.CSSProperties = {
     fontWeight: 500,
@@ -48,20 +45,10 @@ const ClipCopy = ({ copy, theme }: Props) => {
 
   const fillbarStyle: React.CSSProperties = {
     zIndex: 100,
-    backgroundColor: theme.color,
   };
 
-  function handleMouseEnter () {
-    if (contentRef.current) {
-      contentRef.current.style.color = theme.backgroundColor;
-    }
-  }
-
-  function handleMouseLeave () {
-    if (contentRef.current) {
-      contentRef.current.style.color = '';
-    }
-  }
+  function handleMouseEnter () {}
+  function handleMouseLeave () {}
   return (
     <section
       className={ styles.messageEmailWrapper }
