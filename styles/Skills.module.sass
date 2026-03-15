@@ -1,6 +1,25 @@
 @use '@styles/utility' as *
 @use '@styles/variables' as *
 
+.skillsContainer
+  display: flex
+  flex-direction: column
+  gap: 2rem
+  margin-top: 1.5rem
+
+.skillCategory
+  width: 100%
+
+.categoryTitle
+  font-size: 1.1rem
+  font-weight: 600
+  margin-bottom: 1rem
+  text-align: center
+  opacity: 0.9
+  letter-spacing: 0.05em
+  text-transform: uppercase
+  font-size: 0.9rem
+
 .skillCardWrapper
   display: flex
   justify-content: center
@@ -14,6 +33,28 @@
 
 .articleDescription
   @extend .center-text
+
+.languagesSection
+  margin-top: 2.5rem
+  text-align: center
+
+.languageTags
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  gap: 1rem
+  margin-top: 1rem
+
+.languageTag
+  display: inline-flex
+  align-items: center
+  gap: 0.5rem
+  padding: 0.6rem 1.2rem
+  border-radius: 999px
+  background: rgba(99, 102, 241, 0.1)
+  border: 1px solid rgba(99, 102, 241, 0.25)
+  font-size: 0.9rem
+  font-weight: 500
 
 
 

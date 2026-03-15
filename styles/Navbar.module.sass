@@ -8,16 +8,26 @@
   padding: 0 2rem
   position: fixed
   top: 0
-  gap: 0 4vw
-  background: rgba(15, 23, 42, 0.8)
+  background: rgba(15, 23, 42, 0.85)
   -webkit-backdrop-filter: blur(12px)
   backdrop-filter: blur(12px)
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05)
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08)
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3)
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1)
-  @extend .flex-row
-  @extend .center-flex-item
+  display: flex
+  justify-content: space-between
+  align-items: center
   @extend .layer-top-most
+
+.navLeft
+  display: flex
+  align-items: center
+  gap: 0 3vw
+
+.navRight
+  display: flex
+  align-items: center
+  gap: 0 1.5vw
 
 .linkContainer
   @extend .flex-row
@@ -25,15 +35,15 @@
 
 .link
   transition: all $interact-transition
-  padding: 0 2vw
+  padding: 0.5rem 1vw
   position: relative
   &::after
     content: ''
     position: absolute
-    bottom: -5px
+    bottom: -2px
     left: 50%
     transform: translateX(-50%) scaleX(0)
-    width: 80%
+    width: 60%
     height: 2px
     background: linear-gradient(90deg, rgba(99, 102, 241, 0.8), rgba(139, 92, 246, 0.8))
     border-radius: 2px
@@ -42,3 +52,19 @@
     transform: scale(1.1)
     &::after
       transform: translateX(-50%) scaleX(1)
+
+.socialLink
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: 0.5rem
+  border-radius: 8px
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1)
+  color: inherit
+  
+  &:hover
+    transform: scale(1.15)
+    background: rgba(99, 102, 241, 0.15)
+    
+  svg
+    font-size: 1.4rem

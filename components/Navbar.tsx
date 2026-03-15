@@ -21,31 +21,36 @@ const Navbar = ({ links }: Props) => {
     setTheme(checked ? ThemeOptions.Light : ThemeOptions.Dark);
   };
 
-
-
   return (
     <header>
       <nav className={styles.navbar} style={themeStyle}>
-        {links.map((l, i) => {
-          return (
-            <span className={styles.linkContainer} key={l.name}>
-              {/* <NavDotTracker
-                visible={l.path === `#${location}`}
-                color={themeStyle.color}
-                aria-hidden={true}
-              /> */}
-              <a
-                href={l.path}
-                aria-label={l.name}
-                className={styles.link}
-                data-navitem={l.name}
-              >
-                {l.icon}
-              </a>
-            </span>
-          );
-        })}
-        <SwitchBtn onChange={handleChange} color={themeStyle.color} initialChecked={theme === ThemeOptions.Light} />
+        {/* Navigation Links - Left side */}
+        <div className={styles.navLeft}>
+          {links.map((l, i) => {
+            return (
+              <span className={styles.linkContainer} key={l.name}>
+                {/* <NavDotTracker
+                  visible={l.path === `#${location}`}
+                  color={themeStyle.color}
+                  aria-hidden={true}
+                /> */}
+                <a
+                  href={l.path}
+                  aria-label={l.name}
+                  className={styles.link}
+                  data-navitem={l.name}
+                >
+                  {l.icon}
+                </a>
+              </span>
+            );
+          })}
+        </div>
+
+        {/* Right side - Theme switch only */}
+        <div className={styles.navRight}>
+          <SwitchBtn onChange={handleChange} color={themeStyle.color} initialChecked={theme === ThemeOptions.Light} />
+        </div>
       </nav>
     </header>
   );

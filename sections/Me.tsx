@@ -232,71 +232,98 @@ export const projectData: ProjectCardType[] = [
   },
 ];
 
-// SKILL CARDS
+// SKILL CARDS - Organized by category from CV
 
-export const skillcard_Styles: SkillItemType[] = [
+export const skillcard_Frontend: SkillItemType[] = [
   {
-    text: "JavaScript",
-    icon: <FontAwesomeIcon icon={faJs} size="2x" />,
-    skillLevel: "80%",
+    text: "React",
+    icon: <FontAwesomeIcon icon={faReact} size="2x" />,
+    skillLevel: "",
+  },
+  {
+    text: "Next.js",
+    icon: <CustomIcon path="/icons/typescript-icon.png" size={40} />,
+    skillLevel: "",
   },
   {
     text: "TypeScript",
     icon: <CustomIcon path="/icons/typescript-icon.png" size={40} />,
-    skillLevel: "60%",
+    skillLevel: "",
   },
   {
-    text: "React",
-    icon: <FontAwesomeIcon icon={faReact} size="2x" />,
-    skillLevel: "70%",
+    text: "JavaScript",
+    icon: <FontAwesomeIcon icon={faJs} size="2x" />,
+    skillLevel: "",
   },
-];
-export const skillcard_Languages: SkillItemType[] = [
   {
     text: "HTML5",
     icon: <FontAwesomeIcon icon={faHtml5} size="2x" />,
-    skillLevel: "100%",
+    skillLevel: "",
   },
   {
-    text: "CSS",
+    text: "CSS3",
     icon: <FontAwesomeIcon icon={faCss3} size="2x" />,
-    skillLevel: "90%",
+    skillLevel: "",
   },
   {
     text: "Tailwind CSS",
     icon: <FontAwesomeIcon icon={faPaintBrush} size="2x" />,
-    skillLevel: "85%",
-  },
-  {
-    text: "GIT",
-    icon: <FontAwesomeIcon icon={faGithub} size="2x" />,
-    skillLevel: "90%",
-  },
-];
-export const skillcard_Frameworks: SkillItemType[] = [
-  {
-    text: "Node.js",
-    icon: <FontAwesomeIcon icon={faNodeJs} size="2x" />,
-    skillLevel: "70%",
+    skillLevel: "",
   },
   {
     text: "Vite",
     icon: <FontAwesomeIcon icon={faBolt} size="2x" />,
-    skillLevel: "75%",
+    skillLevel: "",
+  },
+];
+
+export const skillcard_Backend: SkillItemType[] = [
+  {
+    text: "Node.js",
+    icon: <FontAwesomeIcon icon={faNodeJs} size="2x" />,
+    skillLevel: "",
   },
   {
-    text: "SQL",
-    icon: <FontAwesomeIcon icon={faDatabase} size="2x" />,
-    skillLevel: "60%",
+    text: "Express",
+    icon: <FontAwesomeIcon icon={faCodeBranch} size="2x" />,
+    skillLevel: "",
   },
   {
     text: "MongoDB",
     icon: <FontAwesomeIcon icon={faDatabase} size="2x" />,
-    skillLevel: "65%",
+    skillLevel: "",
+  },
+  {
+    text: "MySQL",
+    icon: <FontAwesomeIcon icon={faDatabase} size="2x" />,
+    skillLevel: "",
+  },
+  {
+    text: "REST APIs",
+    icon: <FontAwesomeIcon icon={faUpRightFromSquare} size="2x" />,
+    skillLevel: "",
+  },
+];
+
+export const skillcard_Tools: SkillItemType[] = [
+  {
+    text: "Git",
+    icon: <FontAwesomeIcon icon={faGithub} size="2x" />,
+    skillLevel: "",
+  },
+  {
+    text: "GitHub",
+    icon: <FontAwesomeIcon icon={faGithub} size="2x" />,
+    skillLevel: "",
   },
   {
     text: "Jest",
     icon: <CustomIcon path="/icons/jest-icon.png" size={40} />,
-    skillLevel: "50%",
+    skillLevel: "",
+  },
+  {
+    text: "Agile/Scrum",
+    icon: <FontAwesomeIcon icon={faComments} size="2x" />,
+    skillLevel: "",
   },
 ];

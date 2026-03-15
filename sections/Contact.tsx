@@ -83,6 +83,19 @@ const Contact = () => {
               Feel free to reach out for roles, freelance work, or technical interviews.
             </p>
             <ClipCopy copy='pmmachadov@gmail.com' theme={themeStyle} />
+            
+            {/* Download CV Button */}
+            <div className={styles.cvButtonWrapper}>
+              <a 
+                href="/cv-pablo-machado.pdf" 
+                download
+                className={styles.cvButton}
+                title="Download CV"
+              >
+                <span>📄</span>
+                <span>Download CV</span>
+              </a>
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className={styles.formContainer} noValidate>

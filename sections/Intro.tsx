@@ -54,11 +54,12 @@ const Intro = () => {
             <p className={styles.availability}>
               📍 Based in Spain &nbsp;|&nbsp; 🌐 Open to remote international roles in English
             </p>
-            <p>
-              I build performant, accessible web applications with attention to
-              detail and clean code. Experienced across the full stack — from
-              interactive React UIs to Node.js APIs and SQL/NoSQL databases.
-              <br />
+            <p className={styles.profileSummary}>
+              Full Stack Web Developer with experience in <b>React</b>, <b>JavaScript/TypeScript</b>, <b>Node.js</b>, and <b>MongoDB</b>. 
+              Additional background in <b>IT support</b> and <b>AI project support</b>. 
+              Previously provided technical support and customer service in <b>English</b> for the U.S. market.
+            </p>
+            <p className={styles.ctaText}>
               Did I pique your interest? Let&apos;s{' '}
               <a href="#contact" className={styles.chatLink}>
                 <span className={styles.chatLinkText}>chat </span>💬
