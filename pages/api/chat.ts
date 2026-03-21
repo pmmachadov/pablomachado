@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const KIMI_API_KEY = process.env.KIMI_API_KEY;
-const KIMI_API_URL = 'https://api.moonshot.cn/v1/chat/completions';
+const KIMI_API_URL = 'https://api.moonshot.ai/v1/chat/completions';
 
 // Modelo base de Kimi
 const MODEL = 'moonshot-v1-8k';
