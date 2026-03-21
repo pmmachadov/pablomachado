@@ -212,7 +212,9 @@ const IAChat: NextPage = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Error en la respuesta del servidor');
+        const errorData = await response.json().catch(() => ({}));
+        console.error('API error:', response.status, errorData);
+        throw new Error(errorData.details || errorData.error || `Error ${response.status}`);
       }
 
       const data = await response.json();
@@ -225,9 +227,10 @@ const IAChat: NextPage = () => {
       setMessages([...newMessages, assistantMessage]);
     } catch (error) {
       console.error('Error sending message:', error);
+      const errorText = error instanceof Error ? error.message : 'Error desconocido';
       const errorMessage: Message = {
         role: 'assistant',
-        content: 'Lo siento, hubo un error al procesar tu mensaje. Por favor intenta de nuevo.',
+        content: `Error: ${errorText}. Verifica que la API key esté configurada en Netlify.`,
         timestamp: Date.now(),
       };
       setMessages([...newMessages, errorMessage]);
