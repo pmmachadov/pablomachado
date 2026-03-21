@@ -1,6 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useState, useRef, useEffect } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 interface Message {
   role: 'user' | 'assistant' | 'system';
@@ -100,6 +102,79 @@ const decryptData = async <T,>(encrypted: EncryptedData, password: string): Prom
   } catch {
     return null;
   }
+};
+
+// Componente para renderizar contenido con syntax highlighting
+const MessageContent: React.FC<{ content: string }> = ({ content }) => {
+  // Detectar bloques de código markdown: ```language\ncode\n```
+  const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
+  const parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match;
+  let keyIndex = 0;
+
+  while ((match = codeBlockRegex.exec(content)) !== null) {
+    // Texto antes del bloque de código
+    if (match.index > lastIndex) {
+      const textBefore = content.slice(lastIndex, match.index);
+      parts.push(
+        <span key={keyIndex++} style={{ whiteSpace: 'pre-wrap' }}>
+          {textBefore}
+        </span>
+      );
+    }
+
+    // Bloque de código
+    const language = match[1] || 'javascript';
+    const code = match[2].trim();
+    
+    parts.push(
+      <div key={keyIndex++} style={{ margin: '12px 0', borderRadius: '8px', overflow: 'hidden' }}>
+        <div style={{ 
+          backgroundColor: '#1e1e1e', 
+          padding: '6px 12px', 
+          fontSize: '12px', 
+          color: '#858585',
+          borderBottom: '1px solid #333'
+        }}>
+          {language}
+        </div>
+        <SyntaxHighlighter
+          language={language}
+          style={vscDarkPlus}
+          customStyle={{
+            margin: 0,
+            padding: '16px',
+            fontSize: '14px',
+            lineHeight: '1.5',
+            backgroundColor: '#0d0d0d',
+          }}
+          showLineNumbers={true}
+          lineNumberStyle={{
+            color: '#4a4a4a',
+            paddingRight: '16px',
+            minWidth: '40px',
+          }}
+        >
+          {code}
+        </SyntaxHighlighter>
+      </div>
+    );
+
+    lastIndex = match.index + match[0].length;
+  }
+
+  // Texto después del último bloque de código
+  if (lastIndex < content.length) {
+    const textAfter = content.slice(lastIndex);
+    parts.push(
+      <span key={keyIndex++} style={{ whiteSpace: 'pre-wrap' }}>
+        {textAfter}
+      </span>
+    );
+  }
+
+  return <div style={styles.messageContent}>{parts.length > 0 ? parts : content}</div>;
 };
 
 const IAChat: NextPage = () => {
@@ -397,7 +472,7 @@ const IAChat: NextPage = () => {
                   </span>
                 )}
               </div>
-              <div style={styles.messageContent}>{msg.content}</div>
+              <MessageContent content={msg.content} />
             </div>
           ))}
           {isLoading && (
