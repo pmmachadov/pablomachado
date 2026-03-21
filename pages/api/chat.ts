@@ -3,9 +3,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 const KIMI_API_KEY = process.env.KIMI_API_KEY;
 const KIMI_API_URL = 'https://api.moonshot.ai/v1/chat/completions';
 
-// Modelo base de Kimi
-const MODEL = 'moonshot-v1-8k';
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -24,10 +21,14 @@ export default async function handler(
   }
 
   try {
-    const { messages } = req.body;
+    const { messages, model } = req.body;
+    
+    // Usar el modelo seleccionado o el default
+    const selectedModel = model || 'moonshot-v1-8k';
 
     console.log('API called with messages count:', messages?.length);
     console.log('API Key exists:', !!KIMI_API_KEY);
+    console.log('Selected model:', selectedModel);
 
     if (!KIMI_API_KEY) {
       console.error('KIMI_API_KEY not found');
@@ -45,7 +46,7 @@ export default async function handler(
       });
     }
 
-    console.log('Calling Kimi API with model:', MODEL);
+    console.log('Calling Kimi API with model:', selectedModel);
 
     const response = await fetch(KIMI_API_URL, {
       method: 'POST',
@@ -54,7 +55,7 @@ export default async function handler(
         'Authorization': `Bearer ${KIMI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: MODEL,
+        model: selectedModel,
         messages: messages,
         temperature: 0.7,
         max_tokens: 2000,

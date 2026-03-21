@@ -185,6 +185,7 @@ const IAChat: NextPage = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [systemPrompt, setSystemPrompt] = useState(DEFAULT_SYSTEM_PROMPT);
+  const [selectedModel, setSelectedModel] = useState('moonshot-v1-8k');
   const [showSettings, setShowSettings] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -229,6 +230,11 @@ const IAChat: NextPage = () => {
     const savedSystemPrompt = localStorage.getItem('ia_system_prompt');
     if (savedSystemPrompt) {
       setSystemPrompt(savedSystemPrompt);
+    }
+    
+    const savedModel = localStorage.getItem('ia_selected_model');
+    if (savedModel) {
+      setSelectedModel(savedModel);
     }
   }, []);
 
@@ -283,7 +289,7 @@ const IAChat: NextPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ messages: apiMessages }),
+        body: JSON.stringify({ messages: apiMessages, model: selectedModel }),
       });
 
       if (!response.ok) {
@@ -364,8 +370,9 @@ const IAChat: NextPage = () => {
     }
   };
 
-  const saveSystemPrompt = () => {
+  const saveSettings = () => {
     localStorage.setItem('ia_system_prompt', systemPrompt);
+    localStorage.setItem('ia_selected_model', selectedModel);
     setShowSettings(false);
   };
 
@@ -435,13 +442,35 @@ const IAChat: NextPage = () => {
         {/* Settings Panel */}
         {showSettings && (
           <div style={styles.settingsPanel}>
+            <div style={{ marginBottom: '12px' }}>
+              <label style={{ color: '#ffffff', fontSize: '13px', display: 'block', marginBottom: '6px' }}>
+                Modelo:
+              </label>
+              <select
+                value={selectedModel}
+                onChange={(e) => setSelectedModel(e.target.value)}
+                style={{
+                  width: '100%',
+                  padding: '10px 12px',
+                  fontSize: '14px',
+                  backgroundColor: '#000000',
+                  color: '#ffffff',
+                  border: '1px solid #2a2a2a',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                }}
+              >
+                <option value="moonshot-v1-8k">Moonshot v1 8k</option>
+                <option value="kimi-k2-5">Kimi 2.5 Thinking</option>
+              </select>
+            </div>
             <textarea
               value={systemPrompt}
               onChange={(e) => setSystemPrompt(e.target.value)}
               placeholder="System prompt..."
               style={styles.systemPromptInput}
             />
-            <button onClick={saveSystemPrompt} style={styles.saveButton}>
+            <button onClick={saveSettings} style={styles.saveButton}>
               Guardar
             </button>
           </div>
