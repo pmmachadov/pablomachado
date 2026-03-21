@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useState, useRef, useEffect } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 interface Message {
   role: 'user' | 'assistant' | 'system';
@@ -105,7 +105,7 @@ const decryptData = async <T,>(encrypted: EncryptedData, password: string): Prom
 };
 
 // Componente para renderizar contenido con syntax highlighting
-const MessageContent: React.FC<{ content: string }> = ({ content }) => {
+const MessageContent: React.FC<{ content: string; fontSize?: number }> = ({ content, fontSize = 20 }) => {
   // Detectar bloques de código markdown: ```language\ncode\n```
   const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
   const parts: React.ReactNode[] = [];
@@ -141,19 +141,28 @@ const MessageContent: React.FC<{ content: string }> = ({ content }) => {
         </div>
         <SyntaxHighlighter
           language={language}
-          style={vscDarkPlus}
+          style={oneDark}
           customStyle={{
             margin: 0,
-            padding: '16px',
-            fontSize: '14px',
-            lineHeight: '1.5',
-            backgroundColor: '#0d0d0d',
+            padding: '20px',
+            fontSize: `${fontSize}px`,
+            lineHeight: '1.7',
+            backgroundColor: '#0a0a0a',
+            borderRadius: '0 0 8px 8px',
+          }}
+          codeTagProps={{
+            style: {
+              fontSize: `${fontSize}px`,
+              lineHeight: '1.7',
+              fontFamily: "'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace",
+            }
           }}
           showLineNumbers={true}
           lineNumberStyle={{
-            color: '#4a4a4a',
-            paddingRight: '16px',
-            minWidth: '40px',
+            color: '#666',
+            paddingRight: '20px',
+            minWidth: '50px',
+            fontSize: `${fontSize}px`,
           }}
         >
           {code}
@@ -174,7 +183,7 @@ const MessageContent: React.FC<{ content: string }> = ({ content }) => {
     );
   }
 
-  return <div style={styles.messageContent}>{parts.length > 0 ? parts : content}</div>;
+  return <div style={{ ...styles.messageContent, fontSize: `${fontSize}px` }}>{parts.length > 0 ? parts : content}</div>;
 };
 
 const IAChat: NextPage = () => {
@@ -187,8 +196,30 @@ const IAChat: NextPage = () => {
   const [systemPrompt, setSystemPrompt] = useState(DEFAULT_SYSTEM_PROMPT);
   const [selectedModel, setSelectedModel] = useState('moonshot-v1-8k');
   const [showSettings, setShowSettings] = useState(false);
+  const [fontSize, setFontSize] = useState(20);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+
+  // Cargar tamaño de fuente guardado
+  useEffect(() => {
+    const savedFontSize = localStorage.getItem('ia_chat_font_size');
+    if (savedFontSize) {
+      setFontSize(parseInt(savedFontSize, 10));
+    }
+  }, []);
+
+  // Guardar tamaño de fuente cuando cambia
+  useEffect(() => {
+    localStorage.setItem('ia_chat_font_size', fontSize.toString());
+  }, [fontSize]);
+
+  const increaseFontSize = () => {
+    setFontSize(prev => Math.min(prev + 2, 32));
+  };
+
+  const decreaseFontSize = () => {
+    setFontSize(prev => Math.max(prev - 2, 12));
+  };
 
   // Cargar mensajes cifrados al iniciar (solo después del login)
   useEffect(() => {
@@ -430,13 +461,29 @@ const IAChat: NextPage = () => {
       <div style={styles.container}>
         {/* Controles integrados */}
         <div style={styles.controlsRow}>
-          <button onClick={() => setShowSettings(!showSettings)} style={styles.textBtn}>Config</button>
-          <span style={styles.divider}>|</span>
-          <button onClick={exportToMarkdown} style={styles.textBtn}>Exportar</button>
-          <span style={styles.divider}>|</span>
-          <button onClick={clearChat} style={styles.textBtn}>Limpiar</button>
-          <span style={styles.divider}>|</span>
-          <button onClick={handleLogout} style={styles.textBtn}>Salir</button>
+          <div style={styles.controlsLeft}>
+            <button onClick={() => setShowSettings(!showSettings)} style={styles.textBtn}>Config</button>
+            <span style={styles.divider}>|</span>
+            <button onClick={exportToMarkdown} style={styles.textBtn}>Exportar</button>
+            <span style={styles.divider}>|</span>
+            <button onClick={clearChat} style={styles.textBtn}>Limpiar</button>
+            <span style={styles.divider}>|</span>
+            <button onClick={handleLogout} style={styles.textBtn}>Salir</button>
+          </div>
+          <div style={styles.fontSizeControl}>
+            <button onClick={decreaseFontSize} style={styles.fontSizeBtn} title="Reducir texto">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+            <span style={styles.fontSizeValue}>{fontSize}px</span>
+            <button onClick={increaseFontSize} style={styles.fontSizeBtn} title="Aumentar texto">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Settings Panel */}
@@ -501,7 +548,7 @@ const IAChat: NextPage = () => {
                   </span>
                 )}
               </div>
-              <MessageContent content={msg.content} />
+              <MessageContent content={msg.content} fontSize={fontSize} />
             </div>
           ))}
           {isLoading && (
@@ -612,11 +659,15 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   controlsRow: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '8px',
-    gap: '6px',
+    padding: '8px 16px',
     backgroundColor: '#000000',
+  },
+  controlsLeft: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px',
   },
   textBtn: {
     backgroundColor: 'transparent',
@@ -711,10 +762,40 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontSize: '11px',
   },
   messageContent: {
-    fontSize: '20px',
     lineHeight: '1.7',
     whiteSpace: 'pre-wrap',
     color: '#ffffff',
+  },
+  fontSizeControl: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    backgroundColor: '#1a1a1a',
+    borderRadius: '20px',
+    padding: '4px 8px',
+    border: '1px solid #333',
+  },
+  fontSizeBtn: {
+    width: '28px',
+    height: '28px',
+    borderRadius: '50%',
+    border: 'none',
+    backgroundColor: '#0e639c',
+    color: '#ffffff',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: 'all 0.2s ease',
+    padding: 0,
+  },
+  fontSizeValue: {
+    color: '#ffffff',
+    fontSize: '13px',
+    fontWeight: 500,
+    minWidth: '40px',
+    textAlign: 'center',
+    fontFamily: "'Segoe UI', system-ui, sans-serif",
   },
   loadingIndicator: {
     display: 'flex',
