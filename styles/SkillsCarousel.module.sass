@@ -1,0 +1,229 @@
+@use '@styles/utility' as *
+@use '@styles/variables' as *
+
+.carouselContainer
+  position: relative
+  width: 100%
+  overflow: hidden
+  padding: 2rem 0
+  margin: 1.5rem 0
+
+  &:hover
+    .gradientLeft,
+    .gradientRight
+      opacity: 0.8
+
+// Gradient overlays for smooth fade effect
+.gradientLeft,
+.gradientRight
+  position: absolute
+  top: 0
+  bottom: 0
+  width: 120px
+  z-index: 10
+  pointer-events: none
+  transition: opacity 0.3s ease
+
+.gradientLeft
+  left: 0
+  background: linear-gradient(to right, var(--bg-color, #0f172a), transparent)
+
+.gradientRight
+  right: 0
+  background: linear-gradient(to left, var(--bg-color, #0f172a), transparent)
+
+.carouselTrack
+  display: flex
+  gap: 1.5rem
+  width: fit-content
+  will-change: transform
+
+.skillCard
+  position: relative
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  gap: 0.75rem
+  min-width: 160px
+  height: 180px
+  padding: 1.5rem 1.25rem
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02))
+  backdrop-filter: blur(12px)
+  -webkit-backdrop-filter: blur(12px)
+  border: 1px solid rgba(255, 255, 255, 0.12)
+  border-radius: 20px
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.1)
+  cursor: pointer
+  overflow: hidden
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1)
+
+  &:hover
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04))
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15)
+
+    .cardGlow
+      opacity: 1
+
+    .iconWrapper
+      transform: scale(1.15) rotate(5deg)
+      
+      svg, img
+        filter: drop-shadow(0 0 15px currentColor)
+
+.cardGlow
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 150%
+  height: 150%
+  opacity: 0
+  transition: opacity 0.4s ease
+  pointer-events: none
+
+.categoryIndicator
+  position: absolute
+  top: 12px
+  right: 12px
+  width: 8px
+  height: 8px
+  border-radius: 50%
+  box-shadow: 0 0 8px currentColor
+
+.iconWrapper
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 60px
+  height: 60px
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)
+
+  svg
+    font-size: 2.5rem
+    color: #e0e7ff
+    transition: all 0.3s ease
+
+  img
+    width: 40px
+    height: 40px
+    object-fit: contain
+    transition: all 0.3s ease
+
+.skillText
+  font-size: 1rem
+  font-weight: 600
+  color: #e0e7ff
+  text-align: center
+  letter-spacing: 0.02em
+  line-height: 1.3
+
+.categoryLabel
+  font-size: 0.7rem
+  font-weight: 500
+  text-transform: uppercase
+  letter-spacing: 0.1em
+  opacity: 0.8
+
+.pauseIndicator
+  position: absolute
+  bottom: 0
+  left: 50%
+  transform: translateX(-50%)
+  display: flex
+  align-items: center
+  gap: 0.5rem
+  padding: 0.4rem 1rem
+  background: rgba(255, 255, 255, 0.08)
+  backdrop-filter: blur(8px)
+  border-radius: 20px
+  border: 1px solid rgba(255, 255, 255, 0.1)
+  font-size: 0.75rem
+  color: rgba(224, 231, 255, 0.7)
+  pointer-events: none
+
+  svg
+    opacity: 0.8
+
+// Light theme adjustments
+:global([data-theme="light"])
+  .gradientLeft
+    background: linear-gradient(to right, #f8fafc, transparent)
+
+  .gradientRight
+    background: linear-gradient(to left, #f8fafc, transparent)
+
+  .skillCard
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.8))
+    border: 1px solid rgba(0, 0, 0, 0.08)
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 1)
+
+    &:hover
+      background: linear-gradient(145deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 0.95))
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.08)
+
+  .skillText
+    color: #1e293b
+
+  .iconWrapper svg
+    color: #334155
+
+  .pauseIndicator
+    background: rgba(0, 0, 0, 0.05)
+    border: 1px solid rgba(0, 0, 0, 0.08)
+    color: rgba(30, 41, 59, 0.7)
+
+// Responsive adjustments
+@media screen and (max-width: 768px)
+  .carouselContainer
+    padding: 1.5rem 0
+
+  .gradientLeft,
+  .gradientRight
+    width: 60px
+
+  .skillCard
+    min-width: 140px
+    height: 160px
+    padding: 1.25rem 1rem
+
+  .iconWrapper
+    width: 50px
+    height: 50px
+
+    svg
+      font-size: 2rem
+
+    img
+      width: 32px
+      height: 32px
+
+  .skillText
+    font-size: 0.9rem
+
+@media screen and (max-width: 480px)
+  .carouselTrack
+    gap: 1rem
+
+  .skillCard
+    min-width: 120px
+    height: 140px
+    padding: 1rem 0.75rem
+    border-radius: 16px
+
+  .iconWrapper
+    width: 40px
+    height: 40px
+
+    svg
+      font-size: 1.75rem
+
+    img
+      width: 28px
+      height: 28px
+
+  .skillText
+    font-size: 0.8rem
+
+  .categoryLabel
+    font-size: 0.65rem

@@ -1,14 +1,34 @@
 @use '@styles/utility' as *
 @use '@styles/variables' as *
 
-.skillsContainer
+// Category Legend
+.categoryLegend
   display: flex
-  flex-direction: column
+  justify-content: center
+  align-items: center
   gap: 2rem
-  margin-top: 1.5rem
+  margin-bottom: 1rem
+  flex-wrap: wrap
 
-.skillCategory
-  width: 100%
+.legendItem
+  display: flex
+  align-items: center
+  gap: 0.5rem
+  font-size: 0.9rem
+  font-weight: 500
+  color: var(--text-color, #e0e7ff)
+  opacity: 0.9
+
+.legendDot
+  width: 10px
+  height: 10px
+  border-radius: 50%
+  box-shadow: 0 0 8px currentColor
+
+// Languages Section
+.languagesSection
+  margin-top: 3rem
+  text-align: center
 
 .categoryTitle
   font-size: 1.1rem
@@ -19,24 +39,7 @@
   letter-spacing: 0.05em
   text-transform: uppercase
   font-size: 0.9rem
-
-.skillCardWrapper
-  display: flex
-  justify-content: center
-  align-items: center
-  width: 100%
-  margin: 0 auto
-
-.skillContainer
-  p
-    margin-bottom: 0
-
-.articleDescription
-  @extend .center-text
-
-.languagesSection
-  margin-top: 2.5rem
-  text-align: center
+  color: var(--text-color, #e0e7ff)
 
 .languageTags
   display: flex
@@ -55,7 +58,52 @@
   border: 1px solid rgba(99, 102, 241, 0.25)
   font-size: 0.9rem
   font-weight: 500
+  color: var(--text-color, #e0e7ff)
+  transition: all 0.3s ease
 
+  &:hover
+    background: rgba(99, 102, 241, 0.2)
+    border-color: rgba(99, 102, 241, 0.4)
+    transform: translateY(-2px)
 
+// Light theme adjustments
+:global([data-theme="light"])
+  .categoryLegend
+    color: #1e293b
 
+  .categoryTitle
+    color: #1e293b
 
+  .languageTag
+    color: #1e293b
+    background: rgba(99, 102, 241, 0.08)
+    border: 1px solid rgba(99, 102, 241, 0.2)
+
+    &:hover
+      background: rgba(99, 102, 241, 0.15)
+
+// Responsive adjustments
+@media screen and (max-width: 768px)
+  .categoryLegend
+    gap: 1.5rem
+
+  .legendItem
+    font-size: 0.85rem
+
+  .languagesSection
+    margin-top: 2rem
+
+@media screen and (max-width: 480px)
+  .categoryLegend
+    gap: 1rem
+
+  .legendItem
+    font-size: 0.8rem
+
+  .legendDot
+    width: 8px
+    height: 8px
+
+  .languageTag
+    font-size: 0.85rem
+    padding: 0.5rem 1rem
