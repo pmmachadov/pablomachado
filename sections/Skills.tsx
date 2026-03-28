@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import SectionCard from "@components/SectionCard";
-import SkillCard from "@components/SkillCard";
+import SkillsCarousel from "@components/SkillsCarousel";
 import styles from "@styles/Skills.module.sass";
 import {
   skillcard_Frontend,
@@ -11,6 +11,13 @@ import {
 import BgTitle from "@components/BgTitle";
 
 const Skills = () => {
+  // Combine all skills with their categories
+  const allSkills = [
+    ...skillcard_Frontend.map(skill => ({ ...skill, category: "Frontend" as const })),
+    ...skillcard_Backend.map(skill => ({ ...skill, category: "Backend" as const })),
+    ...skillcard_Tools.map(skill => ({ ...skill, category: "Tools" as const })),
+  ];
+
   return (
     <SectionCard id="skills" title="SKILLS" page="SKILLS">
       <motion.div
@@ -21,36 +28,32 @@ const Skills = () => {
       >
         <BgTitle title="SKILLS" />
         
-        <div className={styles.skillsContainer}>
-          <div className={styles.skillCategory}>
-            <h3 className={styles.categoryTitle}>Front-End</h3>
-            <div className={styles.skillCardWrapper}>
-              <SkillCard items={skillcard_Frontend} itemHeight={70} />
-            </div>
+        {/* Category Legend */}
+        <motion.div 
+          className={styles.categoryLegend}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <div className={styles.legendItem}>
+            <span className={styles.legendDot} style={{ backgroundColor: "#6366f1" }} />
+            <span>Frontend</span>
           </div>
+          <div className={styles.legendItem}>
+            <span className={styles.legendDot} style={{ backgroundColor: "#10b981" }} />
+            <span>Backend</span>
+          </div>
+          <div className={styles.legendItem}>
+            <span className={styles.legendDot} style={{ backgroundColor: "#f59e0b" }} />
+            <span>Tools</span>
+          </div>
+        </motion.div>
 
-          <div className={styles.skillCategory}>
-            <h3 className={styles.categoryTitle}>Back-End & Databases</h3>
-            <div className={styles.skillCardWrapper}>
-              <SkillCard items={skillcard_Backend} itemHeight={70} />
-            </div>
-          </div>
+        {/* Skills Carousel */}
+        <SkillsCarousel skills={allSkills} />
 
-          <div className={styles.skillCategory}>
-            <h3 className={styles.categoryTitle}>Tools & Methodologies</h3>
-            <div className={styles.skillCardWrapper}>
-              <SkillCard items={skillcard_Tools} itemHeight={70} />
-            </div>
-          </div>
-        </div>
 
-        <div className={styles.languagesSection}>
-          <h3 className={styles.categoryTitle}>Languages</h3>
-          <div className={styles.languageTags}>
-            <span className={styles.languageTag}>🇪🇸 Spanish (Native)</span>
-            <span className={styles.languageTag}>🇬🇧 English (B2 - Professional)</span>
-          </div>
-        </div>
       </motion.div>
     </SectionCard>
   );
