@@ -219,7 +219,7 @@ export const projectData: ProjectCardType[] = [
     links: [
       {
         name: "Live Project",
-        path: "https://pmmachadov.github.io/super_quiz/",
+        path: "https://my-s-q.vercel.app/",
         icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
       },
       {
