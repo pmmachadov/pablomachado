@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "remotion:dev": "remotion studio remotion/index.tsx",
+    "remotion:render": "remotion render remotion/index.tsx Showreel public/assets/videos/showreel.mp4"
   },
   "dependencies": {
     "@fontsource/archivo-black": "^5.0.20",
@@ -15,6 +17,8 @@
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@remotion/cli": "^4.0.443",
+    "@remotion/player": "^4.0.443",
     "@types/react-syntax-highlighter": "^15.5.13",
     "framer-motion": "^12.23.24",
     "lodash.debounce": "^4.0.8",
@@ -25,7 +29,9 @@
     "react-switch": "^7.0.0",
     "react-syntax-highlighter": "^16.1.1",
     "react-transition-group": "^4.4.5",
-    "sass": "^1.75.0"
+    "remotion": "^4.0.443",
+    "sass": "^1.75.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^5.15.9",

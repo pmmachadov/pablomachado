@@ -1,9 +1,9 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Dispatch, SetStateAction, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import ThemeContext, { ThemeOptions } from '@contexts/ThemeContext';
 import NavLocationContext from '@contexts/NavLocationContext';
-import { lightTheme, darkTheme, links } from '@sections/Me';
+import { darkTheme, links } from '@sections/Me';
 
 // components
 import Intro from '@sections/Intro';
@@ -19,27 +19,13 @@ import '@fontsource/archivo-black';
 import '@fontsource/ubuntu';
 
 const Home: NextPage = () => {
-  const [theme, setTheme] = useState<ThemeOptions>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('theme') as ThemeOptions | null;
-      if (saved === ThemeOptions.Light || saved === ThemeOptions.Dark) return saved;
-    }
-    return ThemeOptions.Dark;
-  });
+  const [theme] = useState<ThemeOptions>(ThemeOptions.Dark);
   const [location, setLocation] = useState('');
 
-  const handleSetTheme: Dispatch<SetStateAction<ThemeOptions>> = (action) => {
-    const newTheme = typeof action === 'function' ? action(theme) : action;
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-  };
-
-  const themeStyle = useMemo(() => {
-    return theme === ThemeOptions.Dark ? darkTheme : lightTheme;
-  }, [theme]);
+  const themeStyle = useMemo(() => darkTheme, []);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme: handleSetTheme, themeStyle }}>
+    <ThemeContext.Provider value={{ theme, setTheme: () => {}, themeStyle }}>
       <NavLocationContext.Provider value={{ location, setLocation }}>
         <div style={themeStyle}>
           <Head>

@@ -48,9 +48,6 @@ const Intro = () => {
             <p className={styles.jobTitle}>
               Frontend / Full-Stack Web Developer
             </p>
-            <p className={styles.stack}>
-              React · TypeScript · Node.js
-            </p>
             <p className={styles.availability}>
               📍 Based in Spain &nbsp;|&nbsp; 🌐 Open to remote international roles in English
             </p>
@@ -67,6 +64,22 @@ const Intro = () => {
             </p>
           </motion.div>
         </div>
+
+        <motion.div variants={itemVariants} className={styles.videoFullWidth}>
+          <div className={styles.videoContainer}>
+            <video
+              src="/assets/videos/showreel.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className={styles.showreelVideo}
+            />
+          </div>
+          <p className={styles.videoCaption}>
+            A glimpse of my code in motion
+          </p>
+        </motion.div>
       </motion.div>
     </SectionCard>
   );
