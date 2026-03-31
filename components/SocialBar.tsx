@@ -6,7 +6,7 @@ import ThemeContext from '@contexts/ThemeContext';
 
 const SocialBar = () => {
   const { themeStyle } = useContext(ThemeContext);
-  const isDark = themeStyle.backgroundColor === '#0f172a';
+  const isDark = true;
 
   return (
     <div 

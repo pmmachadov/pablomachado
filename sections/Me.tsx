@@ -37,7 +37,7 @@ export const lightTheme = {
 };
 export const darkTheme = {
   color: "#e0e7ff",
-  backgroundColor: "#0f172a",
+  backgroundColor: "#264da7",
 };
 // NAVIGATION
 

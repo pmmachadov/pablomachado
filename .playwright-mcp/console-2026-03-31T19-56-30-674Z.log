@@ -1,0 +1,52 @@
+[   57463ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29834
+[   57649ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:45
+[   58716ms] [ERROR] Warning: Prop `%s` did not match. Server: %s Client: %s%s id "svg-inline--fa-title-7AY6LF0D6ouS" "svg-inline--fa-title-NIcRTBpQyHB9" 
+    at title
+    at svg
+    at eval (webpack-internal:///./node_modules/@fortawesome/react-fontawesome/index.es.js:342:24)
+    at a
+    at span
+    at div
+    at nav
+    at header
+    at Navbar (webpack-internal:///./components/Navbar.tsx:18:11)
+    at div
+    at Home (webpack-internal:///./pages/index.tsx:42:68)
+    at MyApp (webpack-internal:///./pages/_app.tsx:15:11)
+    at PathnameContextProviderAdapter (webpack-internal:///./node_modules/next/dist/shared/lib/router/adapters.js:81:11)
+    at ErrorBoundary (webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/ErrorBoundary.js:41:9)
+    at ReactDevOverlay (webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/ReactDevOverlay.js:33:11)
+    at Container (webpack-internal:///./node_modules/next/dist/client/index.js:81:1)
+    at AppContainer (webpack-internal:///./node_modules/next/dist/client/index.js:189:11)
+    at Root (webpack-internal:///./node_modules/next/dist/client/index.js:413:11) 
+See more info here: https://nextjs.org/docs/messages/react-hydration-error @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[   58885ms] [WARNING] Image with src "/assets/images/file-tree.jpg" has legacy prop "layout". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 @ webpack-internal:///./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   58885ms] [WARNING] Image with src "/assets/images/file-tree.jpg" has legacy prop "objectFit". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 @ webpack-internal:///./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   58890ms] [WARNING] Image with src "/assets/images/Pokemon-Charizard-Wallpaper.png" has legacy prop "layout". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 @ webpack-internal:///./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   58890ms] [WARNING] Image with src "/assets/images/Pokemon-Charizard-Wallpaper.png" has legacy prop "objectFit". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 @ webpack-internal:///./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   58896ms] [WARNING] Image with src "/assets/images/pokemon-go.png" has legacy prop "layout". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 @ webpack-internal:///./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   58897ms] [WARNING] Image with src "/assets/images/pokemon-go.png" has legacy prop "objectFit". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 @ webpack-internal:///./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   58904ms] [WARNING] Image with src "/assets/images/tic-tac-toe.webp" has legacy prop "layout". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 @ webpack-internal:///./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   58905ms] [WARNING] Image with src "/assets/images/tic-tac-toe.webp" has legacy prop "objectFit". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 @ webpack-internal:///./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   58912ms] [WARNING] Image with src "/assets/images/connect-four.webp" has legacy prop "layout". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 @ webpack-internal:///./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   58913ms] [WARNING] Image with src "/assets/images/connect-four.webp" has legacy prop "objectFit". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 @ webpack-internal:///./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   58919ms] [WARNING] Image with src "/assets/images/flashcardsimage.jpg" has legacy prop "layout". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 @ webpack-internal:///./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   58919ms] [WARNING] Image with src "/assets/images/flashcardsimage.jpg" has legacy prop "objectFit". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 @ webpack-internal:///./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   58923ms] [WARNING] Image with src "/assets/images/questionsjpg.jpg" has legacy prop "layout". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 @ webpack-internal:///./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   58923ms] [WARNING] Image with src "/assets/images/questionsjpg.jpg" has legacy prop "objectFit". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13 @ webpack-internal:///./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   59117ms] [WARNING] Do not add <script> tags using next/head (see <script> tag with src="https://cdnjs.cloudflare.com/ajax/libs/iamdustan-smoothscroll/0.4.0/smoothscroll.min.js"). Use next/script instead. 
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component @ webpack-internal:///./node_modules/next/dist/shared/lib/utils/warn-once.js:15
