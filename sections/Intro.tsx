@@ -46,7 +46,7 @@ const Intro = () => {
               PABLO MACHADO
             </h1>
             <p className={styles.jobTitle}>
-              Frontend / Full-Stack Web Developer
+              Frontend Web Developer
             </p>
             <p className={styles.stack}>
               React · TypeScript · Node.js
@@ -55,7 +55,7 @@ const Intro = () => {
               📍 Based in Spain &nbsp;|&nbsp; 🌐 Open to remote international roles in English
             </p>
             <p className={styles.profileSummary}>
-              Full Stack Web Developer with experience in <b>React</b>, <b>JavaScript/TypeScript</b>, <b>Node.js</b>, and <b>MongoDB</b>. 
+              Front End Web Developer with experience in <b>React</b>, <b>JavaScript/TypeScript</b>, <b>Node.js</b>, and <b>MongoDB</b>. 
               Additional background in <b>IT support</b> and <b>AI project support</b>. 
               Previously provided technical support and customer service in <b>English</b> for the U.S. market.
             </p>
