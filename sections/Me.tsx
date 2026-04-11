@@ -127,6 +127,42 @@ export const projectData: ProjectCardType[] = [
     ],
   },
   {
+    title: "Super-Quiz",
+    image: "/assets/images/questionsjpg.jpg",
+    description: "Timed multiple-choice quiz app with score tracking and a results summary screen. Solves keeping users engaged with immediate feedback and a clear final score. Built with JavaScript; implemented question shuffling, countdown timer, and local-storage score persistence.",
+    links: [
+      {
+        name: "Live Project",
+        path: "https://my-s-q.vercel.app/",
+        icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
+      },
+      {
+        name: "Code",
+        path: "https://github.com/pmmachadov/super_quiz",
+        icon: <FontAwesomeIcon icon={faCodeBranch} />,
+        style: { zIndex: 1000 },
+      },
+    ],
+  },
+  {
+    title: "Super-Flashcards",
+    image: "/assets/images/flashcardsimage.jpg",
+    description: "Spaced-repetition flashcard app that lets users create, study, and score custom decks. Solves the need for a personalised study tool without relying on third-party services. Built with React and TypeScript; architected component state, deck CRUD operations, and the study-session scoring flow.",
+    links: [
+      {
+        name: "Live Project",
+        path: "https://super-flashcards.netlify.app/",
+        icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
+      },
+      {
+        name: "Code",
+        path: "https://github.com/pmmachadov/super-flashcards",
+        icon: <FontAwesomeIcon icon={faCodeBranch} />,
+        style: { zIndex: 1000 },
+      },
+    ],
+  },
+  {
     title: "Pokémon Card Game",
     image: "/assets/images/Pokemon-Charizard-Wallpaper.png",
     description: "Browser-based memory card game that fetches live Pokémon data from the PokéAPI. Solves the challenge of building engaging stateful UIs without a framework. Built with JavaScript and async/await; implemented flip/match logic, score tracking, and API integration.",
@@ -191,42 +227,6 @@ export const projectData: ProjectCardType[] = [
         name: "Code",
         path: "https://github.com/pmmachadov/my-connect-four",
         icon: <FontAwesomeIcon icon={faCodeBranch} />,
-      },
-    ],
-  },
-  {
-    title: "Super-Flashcards",
-    image: "/assets/images/flashcardsimage.jpg",
-    description: "Spaced-repetition flashcard app that lets users create, study, and score custom decks. Solves the need for a personalised study tool without relying on third-party services. Built with React and TypeScript; architected component state, deck CRUD operations, and the study-session scoring flow.",
-    links: [
-      {
-        name: "Live Project",
-        path: "https://super-flashcards.netlify.app/",
-        icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
-      },
-      {
-        name: "Code",
-        path: "https://github.com/pmmachadov/super-flashcards",
-        icon: <FontAwesomeIcon icon={faCodeBranch} />,
-        style: { zIndex: 1000 },
-      },
-    ],
-  },
-  {
-    title: "Super-Quiz",
-    image: "/assets/images/questionsjpg.jpg",
-    description: "Timed multiple-choice quiz app with score tracking and a results summary screen. Solves keeping users engaged with immediate feedback and a clear final score. Built with JavaScript; implemented question shuffling, countdown timer, and local-storage score persistence.",
-    links: [
-      {
-        name: "Live Project",
-        path: "https://my-s-q.vercel.app/",
-        icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
-      },
-      {
-        name: "Code",
-        path: "https://github.com/pmmachadov/super_quiz",
-        icon: <FontAwesomeIcon icon={faCodeBranch} />,
-        style: { zIndex: 1000 },
       },
     ],
   },
