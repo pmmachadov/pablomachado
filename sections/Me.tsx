@@ -29,12 +29,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CustomIcon from "@components/CustomIcon";
 
-// THEMES
-
-export const lightTheme = {
-  color: "#1e293b",
-  backgroundColor: "#f8fafc",
-};
+// Theme - Solo Dark Mode
 export const darkTheme = {
   color: "#e0e7ff",
   backgroundColor: "#0f172a",

@@ -1,26 +1,19 @@
-import { createContext, Dispatch, SetStateAction } from 'react';
+import { createContext } from 'react';
 
-export enum ThemeOptions {
-  Dark = 'dark',
-  Light = 'light'
-}
+export const darkTheme = {
+  backgroundColor: '#0f172a',
+  color: '#e0e7ff',
+};
 
 interface Theme {
-  theme: ThemeOptions;
-  setTheme: Dispatch<SetStateAction<ThemeOptions>>;
   themeStyle: {
     backgroundColor: string;
     color: string;
-  }
+  };
 }
 
 const initialState: Theme = {
-  theme: ThemeOptions.Dark,
-  setTheme: () => {},
-  themeStyle: {
-    backgroundColor: '',
-    color: ''
-  }
+  themeStyle: darkTheme,
 };
 
 const ThemeContext = createContext<Theme>(initialState);
