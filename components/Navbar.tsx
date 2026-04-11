@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 // import NavDotTracker from '@components/NavDotTracker';
-import SwitchBtn from '@components/SwitchBtn';
 // styles
 import styles from '@styles/Navbar.module.sass';
 // contexts
-import ThemeContext, { ThemeOptions } from '../contexts/ThemeContext';
+import ThemeContext from '../contexts/ThemeContext';
 // import NavLocationContext from '../contexts/NavLocationContext';
 // types
 import { NavLinkType } from 'types';
@@ -14,12 +13,8 @@ interface Props {
 }
 
 const Navbar = ({ links }: Props) => {
-  const { theme, setTheme, themeStyle } = useContext(ThemeContext);
+  const { themeStyle } = useContext(ThemeContext);
   // const { location } = useContext(NavLocationContext);
-
-  const handleChange = (checked: boolean) => {
-    setTheme(checked ? ThemeOptions.Light : ThemeOptions.Dark);
-  };
 
   return (
     <header>
@@ -45,11 +40,6 @@ const Navbar = ({ links }: Props) => {
               </span>
             );
           })}
-        </div>
-
-        {/* Right side - Theme switch only */}
-        <div className={styles.navRight}>
-          <SwitchBtn onChange={handleChange} color={themeStyle.color} initialChecked={theme === ThemeOptions.Light} />
         </div>
       </nav>
     </header>

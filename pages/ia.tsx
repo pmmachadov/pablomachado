@@ -131,11 +131,11 @@ const MessageContent: React.FC<{ content: string; fontSize?: number }> = ({ cont
     parts.push(
       <div key={keyIndex++} style={{ margin: '12px 0', borderRadius: '8px', overflow: 'hidden' }}>
         <div style={{ 
-          backgroundColor: '#1e1e1e', 
+          backgroundColor: '#000000', 
           padding: '6px 12px', 
           fontSize: '12px', 
-          color: '#858585',
-          borderBottom: '1px solid #333'
+          color: '#000000',
+          borderBottom: '1px solid #000000'
         }}>
           {language}
         </div>
@@ -147,7 +147,7 @@ const MessageContent: React.FC<{ content: string; fontSize?: number }> = ({ cont
             padding: '20px',
             fontSize: `${fontSize}px`,
             lineHeight: '1.7',
-            backgroundColor: '#0a0a0a',
+            backgroundColor: '#000000',
             borderRadius: '0 0 8px 8px',
           }}
           codeTagProps={{
@@ -159,7 +159,7 @@ const MessageContent: React.FC<{ content: string; fontSize?: number }> = ({ cont
           }}
           showLineNumbers={true}
           lineNumberStyle={{
-            color: '#666',
+            color: '#000000',
             paddingRight: '20px',
             minWidth: '50px',
             fontSize: `${fontSize}px`,
@@ -454,8 +454,26 @@ const IAChat: NextPage = () => {
           }
           ::-webkit-scrollbar { width: 10px; height: 10px; }
           ::-webkit-scrollbar-track { background: #000000; }
-          ::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
-          ::-webkit-scrollbar-thumb:hover { background: #444; }
+          ::-webkit-scrollbar-thumb { background: #000000; border-radius: 5px; }
+          ::-webkit-scrollbar-thumb:hover { background: #000000; }
+          /* Force black background on syntax highlighter */
+          pre[class*="language-"] {
+            background: #000000 !important;
+          }
+          code[class*="language-"] {
+            background: #000000 !important;
+          }
+          /* Force line numbers to black */
+          .linenumber {
+            color: #000000 !important;
+            background: #000000 !important;
+          }
+          /* Target react-syntax-highlighter line number cells */
+          td[class*="linenumber"],
+          [style*="line-number"] {
+            color: #000000 !important;
+            background: #000000 !important;
+          }
         `}</style>
       </Head>
       <div style={styles.container}>
@@ -770,10 +788,10 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: 'flex',
     alignItems: 'center',
     gap: '8px',
-    backgroundColor: '#1a1a1a',
+    backgroundColor: '#000000',
     borderRadius: '20px',
     padding: '4px 8px',
-    border: '1px solid #333',
+    border: '1px solid #000000',
   },
   fontSizeBtn: {
     width: '28px',
