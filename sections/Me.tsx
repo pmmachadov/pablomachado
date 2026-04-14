@@ -175,40 +175,6 @@ export const projectData: ProjectCardType[] = [
     ],
   },
   {
-    title: "Pokédex",
-    image: "/assets/images/pokemon-go.png",
-    description: "Interactive Pokédex that fetches and displays stats, types, and sprites from the PokéAPI. Solves the need for a fast searchable reference for 900+ Pokémon entries. Built with JavaScript; designed the search, filter, and detail view entirely from scratch.",
-    links: [
-      {
-        name: "Live Project",
-        path: "https://keen-kataifi-559ed9.netlify.app/",
-        icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
-      },
-      {
-        name: "Code",
-        path: "https://github.com/pmmachadov/Javascript-Pokedex",
-        icon: <FontAwesomeIcon icon={faCodeBranch} />,
-      },
-    ],
-  },
-  {
-    title: "Tic Tac Toe",
-    image: "/assets/images/tic-tac-toe.webp",
-    description: "Classic two-player game with win detection, draw handling, and board reset. Solves implementing a complete game state machine in pure JavaScript. Built with vanilla JS and CSS Grid; developed the win-condition algorithm and turn management.",
-    links: [
-      {
-        name: "Live Project",
-        path: "https://my-version-tic-tac-toe.netlify.app/",
-        icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
-      },
-      {
-        name: "Code",
-        path: "https://github.com/pmmachadov/super_quiz",
-        icon: <FontAwesomeIcon icon={faCodeBranch} />,
-      },
-    ],
-  },
-  {
     title: "Connect Four",
     image: "/assets/images/connect-four.webp",
     description: "Fully playable Connect Four with column-drop mechanics and win detection. Solves rendering a dynamic grid and detecting four-in-a-row in all directions. Built with JavaScript and CSS Grid; implemented the drop logic and directional win-check algorithm.",
