@@ -122,6 +122,23 @@ export const projectData: ProjectCardType[] = [
     ],
   },
   {
+    title: "AnkiCards",
+    image: "/assets/images/anki-cards.jpg",
+    description: "Spaced-repetition flashcard app for vocational and university students. Features interactive 3D-flip cards, an adapted SM-2 algorithm, visual progress statistics with charts, and a full deck/card editor. Built with React and Vite; implemented flip logic, local-storage persistence, and responsive dark UI optimised for long study sessions.",
+    links: [
+      {
+        name: "Live Project",
+        path: "https://anki-cards-liart.vercel.app/",
+        icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
+      },
+      {
+        name: "Code",
+        path: "https://github.com/pmmachadov/anki-cards",
+        icon: <FontAwesomeIcon icon={faCodeBranch} />,
+      },
+    ],
+  },
+  {
     title: "Super-Quiz",
     image: "/assets/images/questionsjpg.jpg",
     description: "Timed multiple-choice quiz app with score tracking and a results summary screen. Solves keeping users engaged with immediate feedback and a clear final score. Built with JavaScript; implemented question shuffling, countdown timer, and local-storage score persistence.",
@@ -170,40 +187,6 @@ export const projectData: ProjectCardType[] = [
       {
         name: "Code",
         path: "https://github.com/pmmachadov/Pokemon-Card-Game",
-        icon: <FontAwesomeIcon icon={faCodeBranch} />,
-      },
-    ],
-  },
-  {
-    title: "Pokédex",
-    image: "/assets/images/pokemon-go.png",
-    description: "Interactive Pokédex that fetches and displays stats, types, and sprites from the PokéAPI. Solves the need for a fast searchable reference for 900+ Pokémon entries. Built with JavaScript; designed the search, filter, and detail view entirely from scratch.",
-    links: [
-      {
-        name: "Live Project",
-        path: "https://keen-kataifi-559ed9.netlify.app/",
-        icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
-      },
-      {
-        name: "Code",
-        path: "https://github.com/pmmachadov/Javascript-Pokedex",
-        icon: <FontAwesomeIcon icon={faCodeBranch} />,
-      },
-    ],
-  },
-  {
-    title: "Tic Tac Toe",
-    image: "/assets/images/tic-tac-toe.webp",
-    description: "Classic two-player game with win detection, draw handling, and board reset. Solves implementing a complete game state machine in pure JavaScript. Built with vanilla JS and CSS Grid; developed the win-condition algorithm and turn management.",
-    links: [
-      {
-        name: "Live Project",
-        path: "https://my-version-tic-tac-toe.netlify.app/",
-        icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
-      },
-      {
-        name: "Code",
-        path: "https://github.com/pmmachadov/super_quiz",
         icon: <FontAwesomeIcon icon={faCodeBranch} />,
       },
     ],
