@@ -108,8 +108,8 @@ const Contact = () => {
                 placeholder="Your Name"
                 className={styles.appleInput}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  color: themeStyle.color,
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  color: '#ffffff',
                   borderColor: errors.name ? '#ef4444' : ''
                 }}
               />
@@ -125,8 +125,8 @@ const Contact = () => {
                 placeholder="Your Email"
                 className={styles.appleInput}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  color: themeStyle.color,
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  color: '#ffffff',
                   borderColor: errors.email ? '#ef4444' : ''
                 }}
               />
@@ -143,8 +143,8 @@ const Contact = () => {
                 className={styles.appleInput}
                 style={{
                   resize: 'vertical',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  color: themeStyle.color,
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  color: '#ffffff',
                   borderColor: errors.message ? '#ef4444' : ''
                 }}
               />

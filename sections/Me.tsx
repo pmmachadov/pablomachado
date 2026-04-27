@@ -32,7 +32,7 @@ import CustomIcon from "@components/CustomIcon";
 // Theme - Solo Dark Mode
 export const darkTheme = {
   color: "#e0e7ff",
-  backgroundColor: "#0f172a",
+  backgroundColor: "#1e3a8a",
 };
 // NAVIGATION
 

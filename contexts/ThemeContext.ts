@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 export const darkTheme = {
-  backgroundColor: '#0f172a',
+  backgroundColor: '#1e3a8a',
   color: '#e0e7ff',
 };
 
