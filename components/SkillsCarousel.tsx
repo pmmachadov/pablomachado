@@ -28,7 +28,7 @@ const SkillsCarousel: React.FC<Props> = ({ skills }) => {
           x: {
             repeat: Infinity,
             repeatType: "loop",
-            duration: 40,
+            duration: 20,
             ease: "linear",
           },
         },
