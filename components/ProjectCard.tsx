@@ -26,10 +26,9 @@ const ProjectCard = ({ project }: Props) => {
           <div className={styles.projectImage}>
             <Image
               src={project.image}
-              layout="responsive"
-              width={400}
-              height={200}
-              objectFit="contain"
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              style={{ objectFit: 'cover' }}
               alt={`Image of ${project.title}`}
             />
           </div>
@@ -56,6 +55,7 @@ const ProjectCard = ({ project }: Props) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.projectCardLink}
+                  style={link.style}
                 >
                   {link.icon}
                   {link.name}

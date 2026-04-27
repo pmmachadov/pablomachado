@@ -105,13 +105,25 @@ export const socialLinks: SocialLinkType[] = [
 
 export const projectData: ProjectCardType[] = [
   {
+    title: "TrelloBoard",
+    image: "/assets/images/trelloboard.jpg",
+    description: "Full-featured Kanban board with drag-and-drop cards and columns, multiple views (Board, Table, Calendar, Timeline), undo/redo history, auto-save to IndexedDB, zen mode, command palette, smart search, and keyboard shortcuts. Built with React 19, TypeScript, and Zustand; architected normalized immutable state with O(1) lookups and comprehensive test coverage.",
+    links: [
+      {
+        name: "Code",
+        path: "https://github.com/pmmachadov/TrelloBoard",
+        icon: <FontAwesomeIcon icon={faCodeBranch} />,
+      },
+    ],
+  },
+  {
     title: "File Tree Visualizer",
     image: "/assets/images/file-tree.jpg",
     description: "Developer tool that renders any directory structure as an interactive visual tree. Solves the need to quickly understand project layouts at a glance. Built with JavaScript DOM manipulation; designed and implemented the full parsing and rendering logic from scratch.",
     links: [
       {
         name: "Live Project",
-        path: "https://shimmering-griffin-6b06b7.netlify.app/",
+        path: "https://my-folder-explorer.vercel.app/",
         icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
       },
       {
@@ -163,7 +175,7 @@ export const projectData: ProjectCardType[] = [
     links: [
       {
         name: "Live Project",
-        path: "https://super-flashcards.netlify.app/",
+        path: "https://super-flashcards-ebon.vercel.app/",
         icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
       },
       {
@@ -181,30 +193,14 @@ export const projectData: ProjectCardType[] = [
     links: [
       {
         name: "Live Project",
-        path: "https://statuesque-capybara-b6c91d.netlify.app/",
+        path: "https://pokemon-card-game-theta.vercel.app/",
         icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
       },
       {
         name: "Code",
         path: "https://github.com/pmmachadov/Pokemon-Card-Game",
         icon: <FontAwesomeIcon icon={faCodeBranch} />,
-      },
-    ],
-  },
-  {
-    title: "Connect Four",
-    image: "/assets/images/connect-four.webp",
-    description: "Fully playable Connect Four with column-drop mechanics and win detection. Solves rendering a dynamic grid and detecting four-in-a-row in all directions. Built with JavaScript and CSS Grid; implemented the drop logic and directional win-check algorithm.",
-    links: [
-      {
-        name: "Live Project",
-        path: "https://my-last-connect-four.netlify.app/",
-        icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
-      },
-      {
-        name: "Code",
-        path: "https://github.com/pmmachadov/my-connect-four",
-        icon: <FontAwesomeIcon icon={faCodeBranch} />,
+        style: { position: 'relative', zIndex: 10 },
       },
     ],
   },
