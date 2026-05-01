@@ -111,7 +111,7 @@ export const projectData: ProjectCardType[] = [
     links: [
       {
         name: "Live Project",
-        path: "https://trelloboard.vercel.app/",
+        path: "https://kanbanboard-rouge-theta.vercel.app/",
         icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
       },
       {
