@@ -110,6 +110,11 @@ export const projectData: ProjectCardType[] = [
     description: "Full-featured Kanban board with drag-and-drop cards and columns, multiple views (Board, Table, Calendar, Timeline), undo/redo history, auto-save to IndexedDB, zen mode, command palette, smart search, and keyboard shortcuts. Built with React 19, TypeScript, and Zustand; architected normalized immutable state with O(1) lookups and comprehensive test coverage.",
     links: [
       {
+        name: "Live Project",
+        path: "https://trelloboard.vercel.app/",
+        icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
+      },
+      {
         name: "Code",
         path: "https://github.com/pmmachadov/TrelloBoard",
         icon: <FontAwesomeIcon icon={faCodeBranch} />,
