@@ -20,9 +20,6 @@ const Footer = () => {
           </span>
         </div>
 
-        <div className={styles.techNote}>
-          Crafted with <span>React</span>, <span>Next.js</span> &amp; <span>TypeScript</span>
-        </div>
 
         <button
           type="button"
