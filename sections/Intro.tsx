@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedin, faReact, faNodeJs } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedin, faReact, faNodeJs, faJs } from '@fortawesome/free-brands-svg-icons';
 import {
   faArrowRight,
   faArrowDown,
@@ -147,6 +147,13 @@ const Intro = () => {
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
           >
             <span className={styles.tsMark}>TS</span> TypeScript
+          </motion.div>
+          <motion.div
+            className={`${styles.floatChip} ${styles.chipJs}`}
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 5.2, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
+          >
+            <FontAwesomeIcon icon={faJs} /> JavaScript
           </motion.div>
           <motion.div
             className={`${styles.floatChip} ${styles.chipNode}`}
