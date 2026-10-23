@@ -134,34 +134,37 @@ const Intro = () => {
             />
           </div>
 
-          <motion.div
-            className={`${styles.floatChip} ${styles.chipReact}`}
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <FontAwesomeIcon icon={faReact} /> React
-          </motion.div>
-          <motion.div
-            className={`${styles.floatChip} ${styles.chipTs}`}
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
-          >
-            <span className={styles.tsMark}>TS</span> TypeScript
-          </motion.div>
-          <motion.div
-            className={`${styles.floatChip} ${styles.chipJs}`}
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5.2, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
-          >
-            <FontAwesomeIcon icon={faJs} /> JavaScript
-          </motion.div>
-          <motion.div
-            className={`${styles.floatChip} ${styles.chipNode}`}
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
-          >
-            <FontAwesomeIcon icon={faNodeJs} /> Node.js
-          </motion.div>
+          {/* Orbiting Tech Badges */}
+          <div className={styles.orbitTrack} aria-label="Tecnologías destacadas">
+            <div className={`${styles.orbitItem} ${styles.orbitPos1}`}>
+              <div className={`${styles.bobWrapper} ${styles.bob1}`}>
+                <div className={`${styles.floatChip} ${styles.chipReact}`}>
+                  <FontAwesomeIcon icon={faReact} /> React
+                </div>
+              </div>
+            </div>
+            <div className={`${styles.orbitItem} ${styles.orbitPos2}`}>
+              <div className={`${styles.bobWrapper} ${styles.bob2}`}>
+                <div className={`${styles.floatChip} ${styles.chipJs}`}>
+                  <FontAwesomeIcon icon={faJs} /> JavaScript
+                </div>
+              </div>
+            </div>
+            <div className={`${styles.orbitItem} ${styles.orbitPos3}`}>
+              <div className={`${styles.bobWrapper} ${styles.bob3}`}>
+                <div className={`${styles.floatChip} ${styles.chipNode}`}>
+                  <FontAwesomeIcon icon={faNodeJs} /> Node.js
+                </div>
+              </div>
+            </div>
+            <div className={`${styles.orbitItem} ${styles.orbitPos4}`}>
+              <div className={`${styles.bobWrapper} ${styles.bob4}`}>
+                <div className={`${styles.floatChip} ${styles.chipTs}`}>
+                  <span className={styles.tsMark}>TS</span> TypeScript
+                </div>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         <motion.a

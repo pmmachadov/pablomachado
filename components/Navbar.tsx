@@ -42,7 +42,6 @@ const Navbar = ({ links }: Props) => {
         aria-label="Main navigation"
       >
         <a href="#intro" className={styles.logo} aria-label="Pablo Machado — back to top">
-          <span className={styles.logoMark}>PM</span>
           <span className={styles.logoText}>pablomachado<span>.dev</span></span>
         </a>
 
