@@ -1,59 +1,74 @@
-@use '@styles/utility' as *
-@use '@styles/variables' as *
-
-.emailCopyIcon
-  transition: transform $interact-transition
-  margin-left: 0.6rem
-  opacity: 0.6
-  @extend .layer-middle
-
-.fillbar
-  display: none
-
-.emailContainer
+.wrapper
   position: relative
-  font-size: 0.95rem
-  font-weight: $bold-text
-  padding: 0.65rem 1.25rem
+  display: flex
+  flex-direction: column
+  gap: 8px
   width: 100%
-  max-width: 375px
-  order: 2
-  align-self: center
-  border: 1px solid rgba(99, 102, 241, 0.35)
-  border-radius: 10px
-  background: rgba(99, 102, 241, 0.06)
-  color: inherit
+
+.container
+  display: inline-flex
+  align-items: center
+  justify-content: space-between
+  gap: 14px
+  width: 100%
+  padding: 14px 18px
+  border-radius: var(--radius-md)
+  background: rgba(255, 255, 255, 0.035)
+  border: 1px solid var(--border)
+  color: var(--text)
   cursor: pointer
-  transition: all 0.2s ease
-  @extend .flex-row
-  @extend .center-flex-item
-  @extend .layer-middle
-  @media screen and (min-width: 500px)
-    font-size: $base-text
+  transition: all 250ms var(--ease-out)
 
   &:hover
-    background: rgba(99, 102, 241, 0.14)
-    border-color: rgba(99, 102, 241, 0.6)
+    background: rgba(255, 255, 255, 0.07)
+    border-color: var(--border-strong)
+    transform: translateY(-2px)
 
-    .emailCopyIcon
-      transform: scale(1.15)
-      opacity: 1
+    .icon
+      color: var(--cyan)
+      transform: scale(1.1)
 
-.clipboardMessage
-  order: 1
-  text-align: center
-  margin: 0
-  font-size: 0.85rem
-  color: rgba(99, 102, 241, 0.9)
-  z-index: 100
+.emailContent
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  gap: 2px
 
-.messageEmailWrapper
-  gap: 0.25rem 1rem
-  @extend .flex-column
-  @extend .center-flex-item
+.label
+  font-family: var(--font-mono)
+  font-size: 0.72rem
+  letter-spacing: 0.1em
+  text-transform: uppercase
+  color: var(--text-subtle)
 
 .email
-  @extend .layer-middle
+  font-family: var(--font-sans)
+  font-size: 1rem
+  font-weight: 600
+  color: var(--text)
 
+.icon
+  display: grid
+  place-items: center
+  width: 36px
+  height: 36px
+  border-radius: 10px
+  background: rgba(255, 255, 255, 0.05)
+  border: 1px solid var(--border)
+  font-size: 0.95rem
+  color: var(--text-muted)
+  transition: all 250ms var(--ease-out)
 
-
+.copiedBadge
+  position: absolute
+  top: -12px
+  right: 14px
+  padding: 4px 10px
+  border-radius: 999px
+  font-family: var(--font-mono)
+  font-size: 0.72rem
+  font-weight: 600
+  background: var(--emerald)
+  color: #042f2e
+  box-shadow: 0 4px 14px rgba(52, 211, 153, 0.4)
+  pointer-events: none

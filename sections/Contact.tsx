@@ -1,40 +1,41 @@
-import React, { useContext, useState } from 'react';
-import SectionCard from '@components/SectionCard';
-import ThemeContext from '@contexts/ThemeContext';
-import { socialLinks } from '@sections/Me';
-import ClipCopy from '@components/ClipCopy';
-// styles
-import styles from '@styles/Contact.module.sass';
-import BgTitle from '@components/BgTitle';
+import React, { useState } from "react";
+import SectionCard from "@components/SectionCard";
+import ClipCopy from "@components/ClipCopy";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileArrowDown, faPaperPlane, faCheck, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import styles from "@styles/Contact.module.sass";
 
 const Contact = () => {
-  const { themeStyle } = useContext(ThemeContext);
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-  const [errors, setErrors] = useState({ name: '', email: '', message: '' });
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errors, setErrors] = useState({ name: "", email: "", message: "" });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const form = e.target as HTMLFormElement;
+    const form = e.currentTarget;
     const formData = new FormData(form);
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const message = formData.get('message') as string;
+    const name = (formData.get("name") as string)?.trim();
+    const email = (formData.get("email") as string)?.trim();
+    const message = (formData.get("message") as string)?.trim();
 
     // Validation
-    const newErrors = { name: '', email: '', message: '' };
+    const newErrors = { name: "", email: "", message: "" };
     let hasError = false;
 
     if (!name) {
-      newErrors.name = 'Please enter your name';
+      newErrors.name = "Please enter your name";
       hasError = true;
     }
     if (!email) {
-      newErrors.email = 'Please enter your email address';
+      newErrors.email = "Please enter your email address";
+      hasError = true;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "Please enter a valid email address";
       hasError = true;
     }
     if (!message) {
-      newErrors.message = 'Please enter a message';
+      newErrors.message = "Please enter a message";
       hasError = true;
     }
 
@@ -42,145 +43,177 @@ const Contact = () => {
       setErrors(newErrors);
       return;
     }
-    setErrors({ name: '', email: '', message: '' });
+    setErrors({ name: "", email: "", message: "" });
 
-    setFormStatus('submitting');
-    const data = new FormData(form);
+    setFormStatus("submitting");
 
     try {
       const response = await fetch("https://formspree.io/f/mdkbggjw", {
         method: "POST",
-        body: data,
+        body: formData,
         headers: {
-          'Accept': 'application/json'
-        }
+          Accept: "application/json",
+        },
       });
 
       if (response.ok) {
-        setFormStatus('success');
+        setFormStatus("success");
         form.reset();
-        // Reset status after 3 seconds so user can send another if needed
-        setTimeout(() => setFormStatus('idle'), 3000);
+        setTimeout(() => setFormStatus("idle"), 4000);
       } else {
-        setFormStatus('error');
-        setTimeout(() => setFormStatus('idle'), 3000);
+        setFormStatus("error");
+        setTimeout(() => setFormStatus("idle"), 4000);
       }
-    } catch (error) {
-      setFormStatus('error');
-      setTimeout(() => setFormStatus('idle'), 3000);
+    } catch {
+      setFormStatus("error");
+      setTimeout(() => setFormStatus("idle"), 4000);
     }
   };
 
   return (
-    // change your title and section id
-    <SectionCard id='contact' title='CONTACT' page='CONTACT'>
-      <>
-        <BgTitle title='CONTACT' />
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-          <div>
-            <p className={styles.articleDescription}>
-              I&apos;m currently <b>open to remote frontend or full-stack opportunities</b>.<br />
-              Feel free to reach out for roles, freelance work, or technical interviews.
-            </p>
-            <ClipCopy copy='pmmachadov@gmail.com' theme={themeStyle} />
-            
-            {/* Download CV Button */}
-            <div className={styles.cvButtonWrapper}>
-              <a 
-                href="/cv-pablo-machado.pdf" 
-                download
-                className={styles.cvButton}
-                title="Download CV"
+    <SectionCard
+      id="contact"
+      eyebrow="04 — Get in touch"
+      title={
+        <>
+          Let&apos;s build something <em>together</em>.
+        </>
+      }
+      subtitle="Have an open role, freelance project, or just want to chat tech? Reach out and I will get back to you promptly."
+    >
+      <div className={styles.contactGrid}>
+        {/* Left Column: Direct Info & Social */}
+        <div className={styles.infoColumn}>
+          <div className={styles.statusPill}>
+            <span className={styles.pulseDot} />
+            Available for remote roles &amp; contracts
+          </div>
+
+          <p className={styles.infoText}>
+            I&apos;m currently open to <b>Frontend and Full-Stack opportunities</b>. Based in Spain, working seamlessly across international time zones with fluent English and Spanish.
+          </p>
+
+          <div className={styles.actionsGroup}>
+            <ClipCopy copy="pmmachadov@gmail.com" />
+
+            <a
+              href="/cv-pablo-machado.pdf"
+              download
+              className={styles.cvButton}
+              title="Download Curriculum Vitae"
+            >
+              <FontAwesomeIcon icon={faFileArrowDown} />
+              <span>Download CV (PDF)</span>
+            </a>
+          </div>
+
+          <div className={styles.socialGroup}>
+            <span className={styles.socialLabel}>Professional Profiles</span>
+            <div className={styles.socialLinks}>
+              <a
+                href="https://github.com/pmmachadov"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                data-social-links="github"
+                aria-label="GitHub"
               >
-                <span>📄</span>
-                <span>Download CV</span>
+                <FontAwesomeIcon icon={faGithub} />
+                <span>GitHub</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/pmmachadov/?locale=en_US"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                data-social-links="linkedIn"
+                aria-label="LinkedIn"
+              >
+                <FontAwesomeIcon icon={faLinkedin} />
+                <span>LinkedIn</span>
               </a>
             </div>
           </div>
+        </div>
 
-          <form onSubmit={handleSubmit} className={styles.formContainer} noValidate>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <label htmlFor="name" className={styles.srOnly}>Name</label>
+        {/* Right Column: Contact Form */}
+        <div className={styles.formCard}>
+          <form onSubmit={handleSubmit} className={styles.form} noValidate>
+            <div className={styles.field}>
+              <label htmlFor="name" className={styles.label}>
+                Your Name
+              </label>
               <input
                 id="name"
                 type="text"
                 name="name"
-                placeholder="Your Name"
-                className={styles.appleInput}
-                style={{
-                  background: 'rgba(255, 255, 255, 0.08)',
-                  color: '#ffffff',
-                  borderColor: errors.name ? '#ef4444' : ''
-                }}
+                placeholder="Jane Doe"
+                className={`${styles.input} ${errors.name ? styles.inputError : ""}`}
               />
-              {errors.name && <span style={{ color: '#ef4444', fontSize: '0.85rem', marginLeft: '4px' }}>{errors.name}</span>}
+              {errors.name && <span className={styles.errorText}>{errors.name}</span>}
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <label htmlFor="email" className={styles.srOnly}>Email</label>
+            <div className={styles.field}>
+              <label htmlFor="email" className={styles.label}>
+                Your Email
+              </label>
               <input
                 id="email"
                 type="email"
                 name="email"
-                placeholder="Your Email"
-                className={styles.appleInput}
-                style={{
-                  background: 'rgba(255, 255, 255, 0.08)',
-                  color: '#ffffff',
-                  borderColor: errors.email ? '#ef4444' : ''
-                }}
+                placeholder="jane@example.com"
+                className={`${styles.input} ${errors.email ? styles.inputError : ""}`}
               />
-              {errors.email && <span style={{ color: '#ef4444', fontSize: '0.85rem', marginLeft: '4px' }}>{errors.email}</span>}
+              {errors.email && <span className={styles.errorText}>{errors.email}</span>}
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <label htmlFor="message" className={styles.srOnly}>Message</label>
+            <div className={styles.field}>
+              <label htmlFor="message" className={styles.label}>
+                Message
+              </label>
               <textarea
                 id="message"
                 name="message"
-                placeholder="Your Message"
                 rows={5}
-                className={styles.appleInput}
-                style={{
-                  resize: 'vertical',
-                  background: 'rgba(255, 255, 255, 0.08)',
-                  color: '#ffffff',
-                  borderColor: errors.message ? '#ef4444' : ''
-                }}
+                placeholder="Tell me about your team, project, or timeline..."
+                className={`${styles.textarea} ${errors.message ? styles.inputError : ""}`}
               />
-              {errors.message && <span style={{ color: '#ef4444', fontSize: '0.85rem', marginLeft: '4px' }}>{errors.message}</span>}
+              {errors.message && <span className={styles.errorText}>{errors.message}</span>}
             </div>
 
             <button
               type="submit"
-              disabled={formStatus === 'submitting' || formStatus === 'success'}
-              className={styles.appleButton}
+              disabled={formStatus === "submitting" || formStatus === "success"}
+              className={`${styles.submitBtn} ${
+                formStatus === "success"
+                  ? styles.submitSuccess
+                  : formStatus === "error"
+                  ? styles.submitError
+                  : ""
+              }`}
             >
-              {formStatus === 'submitting' ? 'Sending...' : formStatus === 'success' ? 'Message Sent!' : formStatus === 'error' ? 'Error! Try Again' : 'Send Message'}
+              {formStatus === "submitting" ? (
+                <span>Sending message...</span>
+              ) : formStatus === "success" ? (
+                <>
+                  <FontAwesomeIcon icon={faCheck} />
+                  <span>Message sent successfully!</span>
+                </>
+              ) : formStatus === "error" ? (
+                <>
+                  <FontAwesomeIcon icon={faTriangleExclamation} />
+                  <span>Error sending. Please try again or email directly</span>
+                </>
+              ) : (
+                <>
+                  <span>Send Message</span>
+                  <FontAwesomeIcon icon={faPaperPlane} />
+                </>
+              )}
             </button>
           </form>
         </div>
-
-        <p className={styles.socialLinksTitle}>Connect with me</p>
-        <section className={styles.socialLinksContainer}>
-          {/* add your social information in the projectData.tsx file */}
-          {socialLinks.map((s, i) => {
-            return (
-              <a
-                key={i}
-                href={s.link}
-                aria-label={`navigate to ${s.link}`}
-                className={styles.link}
-                data-social-links={s.title}
-                target={s.target}
-                rel={s.rel}
-              >
-                {s.icon}
-              </a>
-            );
-          })}
-        </section>
-      </>
+      </div>
     </SectionCard>
   );
 };

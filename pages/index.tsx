@@ -6,17 +6,14 @@ import NavLocationContext from '@contexts/NavLocationContext';
 import { links } from '@sections/Me';
 
 // components
-import Intro from '@sections/Intro';
+import Background from '@components/Background';
 import Navbar from '@components/Navbar';
 import SocialBar from '@components/SocialBar';
+import Intro from '@sections/Intro';
 import Skills from '@sections/Skills';
 import Projects from '@sections/Projects';
 import Contact from '@sections/Contact';
 import Footer from '@components/Footer';
-
-// fonts
-import '@fontsource/archivo-black';
-import '@fontsource/ubuntu';
 
 const Home: NextPage = () => {
   const [location, setLocation] = useState('');
@@ -24,55 +21,65 @@ const Home: NextPage = () => {
   return (
     <ThemeContext.Provider value={{ themeStyle: darkTheme }}>
       <NavLocationContext.Provider value={{ location, setLocation }}>
-        <div style={darkTheme}>
-          <Head>
-            {/* SEO - Optimized for recruiters and search engines */}
-            <title>Pablo Machado | Full Stack Web Developer | React & Node.js | Barcelona</title>
-            <meta
-              name='description'
-              content='Full Stack Web Developer with experience in React, TypeScript, Node.js, and MongoDB. Background in IT support and AI project support. Based in Barcelona, open to remote roles.'
-            />
-            <meta name='keywords' content='Full Stack Developer, Frontend Developer, React, TypeScript, Node.js, JavaScript, Barcelona, Remote, Web Developer, IT Support, AI Projects' />
-            <meta name='author' content='Pablo Machado' />
-            <meta name='robots' content='index, follow' />
-            
-            {/* Open Graph for LinkedIn, Twitter, etc. */}
-            <meta property='og:type' content='website' />
-            <meta property='og:url' content='https://pablomachado.dev' />
-            <meta property='og:title' content='Pablo Machado | Full Stack Web Developer' />
-            <meta property='og:description' content='Full Stack Developer with experience in React, TypeScript, Node.js. Open to remote opportunities.' />
-            <meta property='og:image' content='https://pablomachado.dev/assets/images/personalPhoto.jpg' />
-            
-            {/* Twitter Card */}
-            <meta name='twitter:card' content='summary_large_image' />
-            <meta name='twitter:title' content='Pablo Machado | Full Stack Web Developer' />
-            <meta name='twitter:description' content='React · TypeScript · Node.js · Open to remote roles' />
-            <meta name='twitter:image' content='https://pablomachado.dev/assets/images/personalPhoto.jpg' />
-            
-            {/* Contact & Location for search engines */}
-            <meta name='geo.region' content='ES-CT' />
-            <meta name='geo.placename' content='Barcelona' />
-            
-            <link rel='icon' href='/favicon.ico' />
-            <link rel='canonical' href='https://pablomachado.dev' />
-            
-            <script
-              src='https://cdnjs.cloudflare.com/ajax/libs/iamdustan-smoothscroll/0.4.0/smoothscroll.min.js'
-              async
-            ></script>
-          </Head>
-          <Navbar links={links} />
-          <SocialBar />
+        <Head>
+          {/* SEO - Optimized for recruiters and search engines */}
+          <title>Pablo Machado | Frontend &amp; Full Stack Developer | React, TypeScript &amp; Node.js</title>
+          <meta
+            name="description"
+            content="Frontend & Full Stack Web Developer specializing in React, TypeScript, Node.js, and modern web architectures. Open to remote opportunities."
+          />
+          <meta
+            name="keywords"
+            content="Pablo Machado, Full Stack Developer, Frontend Developer, React, TypeScript, Node.js, JavaScript, Next.js, Web Developer, Barcelona, Remote Developer"
+          />
+          <meta name="author" content="Pablo Machado" />
+          <meta name="robots" content="index, follow" />
 
-          <main>
-            <Intro />
-            <Skills />
-            <Projects />
-            <Contact />
-          </main>
+          {/* Open Graph */}
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://pablomachado.dev" />
+          <meta property="og:title" content="Pablo Machado | Frontend &amp; Full Stack Developer" />
+          <meta
+            property="og:description"
+            content="Frontend & Full Stack Web Developer specializing in React, TypeScript, and Node.js. Open to remote roles."
+          />
+          <meta property="og:image" content="https://pablomachado.dev/assets/images/personalPhoto.jpg" />
 
-          <Footer />
-        </div>
+          {/* Twitter Card */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Pablo Machado | Frontend &amp; Full Stack Developer" />
+          <meta
+            name="twitter:description"
+            content="React · TypeScript · Node.js · Open to remote opportunities worldwide"
+          />
+          <meta name="twitter:image" content="https://pablomachado.dev/assets/images/personalPhoto.jpg" />
+
+          {/* Location */}
+          <meta name="geo.region" content="ES-CT" />
+          <meta name="geo.placename" content="Barcelona, Spain" />
+
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="canonical" href="https://pablomachado.dev" />
+        </Head>
+
+        {/* Ambient background lighting, cursor spotlight and subtle grid */}
+        <Background />
+
+        {/* Floating pill navigation */}
+        <Navbar links={links} />
+
+        {/* Vertical social dock */}
+        <SocialBar />
+
+        {/* Main Sections */}
+        <main>
+          <Intro />
+          <Skills />
+          <Projects />
+          <Contact />
+        </main>
+
+        <Footer />
       </NavLocationContext.Provider>
     </ThemeContext.Provider>
   );

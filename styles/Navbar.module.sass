@@ -1,70 +1,179 @@
-@use '@styles/utility' as *
-@use '@styles/variables' as *
-
-.navbar
-  height: $navbar-height
-  width: 100%
-  font-size: 1.3rem
-  padding: 0 2rem
+.header
   position: fixed
   top: 0
-  background: rgba(30, 58, 138, 0.85)
-  -webkit-backdrop-filter: blur(12px)
-  backdrop-filter: blur(12px)
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08)
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3)
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1)
+  left: 0
+  right: 0
+  z-index: 1000
   display: flex
+  justify-content: center
+  padding: 14px 16px 0
+  pointer-events: none
+
+.progress
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  height: 2px
+  transform-origin: 0 50%
+  background: var(--gradient-warm)
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.8)
+  z-index: 1001
+
+.navbar
+  pointer-events: auto
+  width: 100%
+  max-width: 980px
+  height: 58px
+  display: flex
+  align-items: center
   justify-content: space-between
-  align-items: center
-  @extend .layer-top-most
+  gap: 16px
+  padding: 0 8px 0 10px
+  border-radius: 999px
+  border: 1px solid transparent
+  background: transparent
+  transition: background 400ms var(--ease-out), border-color 400ms var(--ease-out), box-shadow 400ms var(--ease-out), max-width 500ms var(--ease-out)
 
-.navLeft
+.scrolled
+  max-width: 860px
+  background: rgba(13, 13, 21, 0.62)
+  border-color: var(--border)
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05)
+  backdrop-filter: blur(18px) saturate(160%)
+  -webkit-backdrop-filter: blur(18px) saturate(160%)
+
+.logo
   display: flex
   align-items: center
-  gap: 0 3vw
+  gap: 10px
+  font-family: var(--font-display)
+  font-weight: 600
+  color: var(--text)
+  &:hover .logoMark
+    transform: rotate(-8deg) scale(1.05)
 
-.navRight
+.logoMark
+  display: grid
+  place-items: center
+  width: 38px
+  height: 38px
+  border-radius: 12px
+  font-size: 0.9rem
+  letter-spacing: -0.02em
+  color: #fff
+  background: var(--gradient-accent)
+  box-shadow: 0 6px 20px -6px rgba(139, 92, 246, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.35)
+  transition: transform 400ms var(--ease-spring)
+
+.logoText
+  font-size: 0.95rem
+  letter-spacing: -0.01em
+  span
+    color: var(--text-subtle)
+
+.links
+  list-style: none
   display: flex
   align-items: center
-  gap: 0 1.5vw
-
-.linkContainer
-  @extend .flex-row
-  @extend .center-flex-item
+  gap: 2px
+  padding: 4px
+  border-radius: 999px
+  background: rgba(255, 255, 255, 0.03)
+  border: 1px solid var(--border)
 
 .link
-  transition: all $interact-transition
-  padding: 0.5rem 1vw
   position: relative
-  &::after
-    content: ''
-    position: absolute
-    bottom: -2px
-    left: 50%
-    transform: translateX(-50%) scaleX(0)
-    width: 60%
-    height: 2px
-    background: linear-gradient(90deg, rgba(99, 102, 241, 0.8), rgba(139, 92, 246, 0.8))
-    border-radius: 2px
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)
-  &:hover
-    transform: scale(1.1)
-    &::after
-      transform: translateX(-50%) scaleX(1)
-
-.socialLink
+  isolation: isolate
   display: flex
   align-items: center
-  justify-content: center
-  padding: 0.5rem
-  border-radius: 8px
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1)
-  color: inherit
-  
+  gap: 8px
+  padding: 8px 14px
+  border-radius: 999px
+  font-size: 0.875rem
+  font-weight: 500
+  color: var(--text-muted)
+  transition: color 250ms ease
   &:hover
-    transform: scale(1.15)
-    background: rgba(99, 102, 241, 0.15)
-    
+    color: var(--text)
+
+.active
+  color: var(--text)
+
+.pill
+  position: absolute
+  inset: 0
+  border-radius: 999px
+  background: rgba(255, 255, 255, 0.08)
+  border: 1px solid rgba(255, 255, 255, 0.1)
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08)
+  z-index: -1
+
+.linkIcon
+  display: none
   svg
-    font-size: 1.4rem
+    width: 16px !important
+    height: 16px
+
+.linkLabel
+  position: relative
+
+.cta
+  position: relative
+  display: inline-flex
+  align-items: center
+  gap: 8px
+  padding: 9px 18px
+  border-radius: 999px
+  font-size: 0.85rem
+  font-weight: 600
+  color: #0b0b12
+  background: #f4f4f8
+  box-shadow: 0 6px 24px -8px rgba(255, 255, 255, 0.45)
+  transition: transform 250ms var(--ease-out), box-shadow 250ms var(--ease-out)
+  &:hover
+    transform: translateY(-1px)
+    box-shadow: 0 10px 30px -8px rgba(167, 139, 250, 0.9)
+
+.ctaDot
+  width: 7px
+  height: 7px
+  border-radius: 50%
+  background: #10b981
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25)
+
+@media (max-width: 860px)
+  .logoText
+    display: none
+
+@media (max-width: 640px)
+  .header
+    top: auto
+    bottom: 0
+    padding: 0 12px 14px
+  .progress
+    display: none
+  .navbar,
+  .scrolled
+    max-width: 420px
+    height: 60px
+    background: rgba(13, 13, 21, 0.78)
+    border-color: var(--border)
+    backdrop-filter: blur(18px) saturate(160%)
+    -webkit-backdrop-filter: blur(18px) saturate(160%)
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.8)
+  .logo,
+  .cta
+    display: none
+  .links
+    width: 100%
+    justify-content: space-between
+    background: transparent
+    border: none
+  .link
+    flex-direction: column
+    gap: 2px
+    padding: 6px 14px
+    font-size: 0.68rem
+  .linkIcon
+    display: block

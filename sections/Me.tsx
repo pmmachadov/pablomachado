@@ -31,8 +31,8 @@ import CustomIcon from "@components/CustomIcon";
 
 // Theme - Solo Dark Mode
 export const darkTheme = {
-  color: "#e0e7ff",
-  backgroundColor: "#1e3a8a",
+  color: "#ededf3",
+  backgroundColor: "#07070c",
 };
 // NAVIGATION
 
@@ -107,6 +107,7 @@ export const projectData: ProjectCardType[] = [
   {
     title: "TrelloBoard",
     image: "/assets/images/trelloboard.jpg",
+    tags: ["React 19", "TypeScript", "Zustand", "IndexedDB"],
     description: "Full-featured Kanban board with drag-and-drop cards and columns, multiple views (Board, Table, Calendar, Timeline), undo/redo history, auto-save to IndexedDB, zen mode, command palette, smart search, and keyboard shortcuts. Built with React 19, TypeScript, and Zustand; architected normalized immutable state with O(1) lookups and comprehensive test coverage.",
     links: [
       {
@@ -124,6 +125,7 @@ export const projectData: ProjectCardType[] = [
   {
     title: "File Tree Visualizer",
     image: "/assets/images/file-tree.jpg",
+    tags: ["JavaScript", "DOM", "Dev Tool"],
     description: "Developer tool that renders any directory structure as an interactive visual tree. Solves the need to quickly understand project layouts at a glance. Built with JavaScript DOM manipulation; designed and implemented the full parsing and rendering logic from scratch.",
     links: [
       {
@@ -141,6 +143,7 @@ export const projectData: ProjectCardType[] = [
   {
     title: "AnkiCards",
     image: "/assets/images/anki-cards.jpg",
+    tags: ["React", "Vite", "SM-2", "Charts"],
     description: "Spaced-repetition flashcard app for vocational and university students. Features interactive 3D-flip cards, an adapted SM-2 algorithm, visual progress statistics with charts, and a full deck/card editor. Built with React and Vite; implemented flip logic, local-storage persistence, and responsive dark UI optimised for long study sessions.",
     links: [
       {
@@ -158,6 +161,7 @@ export const projectData: ProjectCardType[] = [
   {
     title: "Super-Quiz",
     image: "/assets/images/questionsjpg.jpg",
+    tags: ["JavaScript", "LocalStorage"],
     description: "Timed multiple-choice quiz app with score tracking and a results summary screen. Solves keeping users engaged with immediate feedback and a clear final score. Built with JavaScript; implemented question shuffling, countdown timer, and local-storage score persistence.",
     links: [
       {
@@ -176,6 +180,7 @@ export const projectData: ProjectCardType[] = [
   {
     title: "Super-Flashcards",
     image: "/assets/images/flashcardsimage.jpg",
+    tags: ["React", "TypeScript"],
     description: "Spaced-repetition flashcard app that lets users create, study, and score custom decks. Solves the need for a personalised study tool without relying on third-party services. Built with React and TypeScript; architected component state, deck CRUD operations, and the study-session scoring flow.",
     links: [
       {
@@ -194,6 +199,7 @@ export const projectData: ProjectCardType[] = [
   {
     title: "Pokémon Card Game",
     image: "/assets/images/Pokemon-Charizard-Wallpaper.png",
+    tags: ["JavaScript", "PokéAPI", "Async/Await"],
     description: "Browser-based memory card game that fetches live Pokémon data from the PokéAPI. Solves the challenge of building engaging stateful UIs without a framework. Built with JavaScript and async/await; implemented flip/match logic, score tracking, and API integration.",
     links: [
       {
@@ -221,7 +227,12 @@ export const skillcard_Frontend: SkillItemType[] = [
   },
   {
     text: "Next.js",
-    icon: <CustomIcon path="/icons/typescript-icon.png" size={40} />,
+    icon: (
+      <svg viewBox="0 0 180 180" width="1em" height="1em" aria-hidden="true" style={{ fontSize: "2em" }}>
+        <circle cx="90" cy="90" r="86" fill="currentColor" opacity="0.12" stroke="currentColor" strokeWidth="6" />
+        <path d="M70 56v68M70 56l52 72M112 56v40" stroke="currentColor" strokeWidth="12" strokeLinecap="round" fill="none" />
+      </svg>
+    ),
     skillLevel: "",
   },
   {

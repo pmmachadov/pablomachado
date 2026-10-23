@@ -1,15 +1,68 @@
-@use '@styles/utility' as *
-@use '@styles/variables' as *
-
 .footer
-  // height: 80px;
-  margin-top: 1rem
-  padding: 1rem 0
-  font-size: $small-text
-  text-align: center
-  @extend .flex-column
-  @extend .center-flex-item
-  a
-    font-weight: $bold-text
-    text-decoration: underline
+  position: relative
+  z-index: 10
+  padding: 48px 0 60px
+  margin-top: 60px
+  border-top: 1px solid var(--border)
+  background: rgba(7, 7, 12, 0.4)
 
+.content
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 20px
+  flex-wrap: wrap
+
+.brand
+  display: flex
+  flex-direction: column
+  gap: 4px
+
+.brandName
+  font-family: var(--font-display)
+  font-size: 1rem
+  font-weight: 700
+  color: var(--text)
+
+.copyright
+  font-size: 0.82rem
+  color: var(--text-subtle)
+
+.techNote
+  display: inline-flex
+  align-items: center
+  gap: 8px
+  font-family: var(--font-mono)
+  font-size: 0.76rem
+  color: var(--text-subtle)
+  span
+    color: var(--text-muted)
+
+.backToTop
+  display: inline-flex
+  align-items: center
+  gap: 8px
+  padding: 8px 14px
+  border-radius: 999px
+  font-family: var(--font-mono)
+  font-size: 0.78rem
+  color: var(--text-muted)
+  background: rgba(255, 255, 255, 0.03)
+  border: 1px solid var(--border)
+  cursor: pointer
+  transition: all 250ms var(--ease-out)
+
+  &:hover
+    color: var(--text)
+    background: rgba(255, 255, 255, 0.08)
+    border-color: var(--border-strong)
+    transform: translateY(-2px)
+
+@media (max-width: 640px)
+  .footer
+    padding-bottom: 90px // space for mobile bottom nav
+
+  .content
+    flex-direction: column
+    align-items: flex-start
+    gap: 16px

@@ -4,6 +4,7 @@ export interface ProjectCardType {
   title: string;
   image: string;
   description?: string;
+  tags?: string[];
   links: {
     name: string;
     path: string;

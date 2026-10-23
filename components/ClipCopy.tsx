@@ -1,82 +1,58 @@
-import React, { useRef, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy } from '@fortawesome/free-solid-svg-icons';
-import debounce from 'lodash.debounce';
-import styles from '@styles/ClipCopy.module.sass';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCopy, faCheck } from "@fortawesome/free-solid-svg-icons";
+import styles from "@styles/ClipCopy.module.sass";
 
 interface Props {
   copy: string;
-  theme: {
-    backgroundColor: string;
-    color: string;
-  };
+  theme?: unknown;
 }
 
-const ClipCopy = ({ copy, theme }: Props) => {
-  const [messageOpacity, setMessageOpacity] = useState(0);
-  const fillbarRef = useRef<HTMLButtonElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
+const ClipCopy: React.FC<Props> = ({ copy }) => {
+  const [copied, setCopied] = useState(false);
 
-  // debounce to limit user from spamming copy button
-  const hideMessage = debounce(() => {
-    setMessageOpacity(0);
-  }, 4000);
-
-  const copyEmail = (str: string) => () => {
-    navigator.clipboard.writeText(str);
-    if (messageOpacity === 0) {
-      setMessageOpacity(1);
-      hideMessage();
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(copy);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      // fallback
     }
   };
 
-  const emailContainerStyle: React.CSSProperties = {};
-
-  const clipboardMessageStyle: React.CSSProperties = {
-    fontWeight: 500,
-    opacity: messageOpacity,
-    height: messageOpacity * 40,
-    transition: 'height 150ms ease-out, opacity 150ms ease-out',
-  };
-
-  const contentStyle: React.CSSProperties = {
-    zIndex: 200,
-  };
-
-  const fillbarStyle: React.CSSProperties = {
-    zIndex: 100,
-  };
-
-  function handleMouseEnter () {}
-  function handleMouseLeave () {}
   return (
-    <section
-      className={ styles.messageEmailWrapper }
-      aria-label='copy to clipboard'
-    >
-      <p className={ styles.clipboardMessage } style={ clipboardMessageStyle }>
-        Copied to clipboard!
-      </p>
+    <div className={styles.wrapper}>
       <button
-        className={ styles.emailContainer }
-        onClick={ copyEmail(copy) }
-        style={ emailContainerStyle }
+        type="button"
+        onClick={handleCopy}
+        className={styles.container}
+        title="Click to copy email address"
       >
-        <span ref={ contentRef } style={ contentStyle }>
-          <span className={ styles.email }>{ copy }</span>
-          <FontAwesomeIcon
-            icon={ faCopy }
-            size='lg'
-            className={ styles.emailCopyIcon }
-          />
+        <div className={styles.emailContent}>
+          <span className={styles.label}>Direct Email</span>
+          <span className={styles.email}>{copy}</span>
+        </div>
+        <span className={styles.icon}>
+          <FontAwesomeIcon icon={copied ? faCheck : faCopy} />
         </span>
-        <span
-          ref={ fillbarRef }
-          className={ styles.fillbar }
-          style={ fillbarStyle }
-        />
       </button>
-    </section>
+
+      <AnimatePresence>
+        {copied && (
+          <motion.span
+            className={styles.copiedBadge}
+            initial={{ opacity: 0, y: 6, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -4, scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+          >
+            Copied to clipboard! ✓
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 
