@@ -105,6 +105,24 @@ export const socialLinks: SocialLinkType[] = [
 
 export const projectData: ProjectCardType[] = [
   {
+    title: "US Live Cams",
+    image: "/assets/images/us-live-cams.jpg",
+    tags: ["React 19", "TypeScript", "Vite", "YouTube API"],
+    description: "Interactive real-time web application to explore 24/7 live nature, wildlife, coastal, and city webcams across the United States. Built with React 19, TypeScript, and Vite following clean MVC architecture; features live video thumbnails, full-text search, category filtering, favorites watchlist in LocalStorage, and responsive player with fallback handling.",
+    links: [
+      {
+        name: "Live Project",
+        path: "https://us-live-cams.vercel.app/",
+        icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
+      },
+      {
+        name: "Code",
+        path: "https://github.com/pmmachadov/us-live-cams",
+        icon: <FontAwesomeIcon icon={faCodeBranch} />,
+      },
+    ],
+  },
+  {
     title: "TrelloBoard",
     image: "/assets/images/trelloboard.jpg",
     tags: ["React 19", "TypeScript", "Zustand", "IndexedDB"],
@@ -172,25 +190,6 @@ export const projectData: ProjectCardType[] = [
       {
         name: "Code",
         path: "https://github.com/pmmachadov/super_quiz",
-        icon: <FontAwesomeIcon icon={faCodeBranch} />,
-        style: { zIndex: 1000 },
-      },
-    ],
-  },
-  {
-    title: "Super-Flashcards",
-    image: "/assets/images/flashcardsimage.jpg",
-    tags: ["React", "TypeScript"],
-    description: "Spaced-repetition flashcard app that lets users create, study, and score custom decks. Solves the need for a personalised study tool without relying on third-party services. Built with React and TypeScript; architected component state, deck CRUD operations, and the study-session scoring flow.",
-    links: [
-      {
-        name: "Live Project",
-        path: "https://super-flashcards-ebon.vercel.app/",
-        icon: <FontAwesomeIcon icon={faUpRightFromSquare} />,
-      },
-      {
-        name: "Code",
-        path: "https://github.com/pmmachadov/super-flashcards",
         icon: <FontAwesomeIcon icon={faCodeBranch} />,
         style: { zIndex: 1000 },
       },
