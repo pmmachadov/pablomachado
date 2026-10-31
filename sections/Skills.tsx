@@ -100,7 +100,7 @@ const Skills = () => {
     const stopTimeout = setTimeout(() => {
       clearInterval(stepInterval);
       setLitIndex(null);
-    }, 4000);
+    }, 2000);
 
     return () => {
       clearInterval(stepInterval);

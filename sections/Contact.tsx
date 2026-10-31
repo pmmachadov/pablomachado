@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SectionCard from "@components/SectionCard";
 import ClipCopy from "@components/ClipCopy";
+import GoldenFirework from "@components/GoldenFirework";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileArrowDown, faPaperPlane, faCheck, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
@@ -138,6 +139,7 @@ const Contact = () => {
 
         {/* Right Column: Contact Form */}
         <div className={styles.formCard}>
+          <GoldenFirework />
           <form onSubmit={handleSubmit} className={styles.form} noValidate>
             <div className={styles.field}>
               <label htmlFor="name" className={styles.label}>
