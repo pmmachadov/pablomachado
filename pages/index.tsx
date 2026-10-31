@@ -7,6 +7,7 @@ import { links } from '@sections/Me';
 
 // components
 import Background from '@components/Background';
+import ScrollProgress from '@components/ScrollProgress';
 import Navbar from '@components/Navbar';
 import SocialBar from '@components/SocialBar';
 import Intro from '@sections/Intro';
@@ -61,6 +62,9 @@ const Home: NextPage = () => {
           <link rel="icon" href="/favicon.ico" />
           <link rel="canonical" href="https://pablomachado.dev" />
         </Head>
+
+        {/* Top scroll progress indicator */}
+        <ScrollProgress />
 
         {/* Ambient background lighting, cursor spotlight and subtle grid */}
         <Background />

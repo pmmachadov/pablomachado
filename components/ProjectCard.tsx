@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
@@ -11,16 +11,36 @@ interface Props {
 }
 
 const ProjectCard: React.FC<Props> = ({ project }) => {
+  const cardRef = useRef<HTMLElement>(null);
+
   const liveLink = project.links.find(
-    (l) => l.name.toLowerCase().includes("live") || l.name.toLowerCase().includes("project")
+    (l) =>
+      l.name.toLowerCase().includes("live") ||
+      l.name.toLowerCase().includes("project")
   );
-  const codeLink = project.links.find((l) =>
-    l.name.toLowerCase().includes("code") || l.name.toLowerCase().includes("github")
+  const codeLink = project.links.find(
+    (l) =>
+      l.name.toLowerCase().includes("code") ||
+      l.name.toLowerCase().includes("github")
   );
 
+  const handlePointerMove = (e: React.PointerEvent<HTMLElement>) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    el.style.setProperty("--my", `${e.clientY - rect.top}px`);
+  };
+
   return (
-    <article className={styles.card}>
+    <article
+      ref={cardRef}
+      className={styles.card}
+      onPointerMove={handlePointerMove}
+    >
       <div className={styles.cardGlow} />
+      <div className={styles.spotlightBorder} />
+      <div className={styles.spotlightSurface} />
 
       {/* Project Image Preview */}
       <div className={styles.imageContainer}>

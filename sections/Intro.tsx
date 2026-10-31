@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -31,13 +31,37 @@ const item: Variants = {
   },
 };
 
+const handleMagneticMove = (e: React.PointerEvent<HTMLAnchorElement>) => {
+  const el = e.currentTarget;
+  const rect = el.getBoundingClientRect();
+  const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.24;
+  const dy = (e.clientY - (rect.top + rect.height / 2)) * 0.28;
+  el.style.transform = `translate3d(${dx.toFixed(1)}px, ${dy.toFixed(1)}px, 0)`;
+};
+
+const handleMagneticLeave = (e: React.PointerEvent<HTMLAnchorElement>) => {
+  e.currentTarget.style.transform = 'translate3d(0px, 0px, 0)';
+};
+
 const Intro = () => {
   const [wordIndex, setWordIndex] = useState(0);
+  const bentoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const t = setInterval(() => setWordIndex((i) => (i + 1) % ROTATING_WORDS.length), 2600);
     return () => clearInterval(t);
   }, []);
+
+  const handleBentoPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const grid = bentoRef.current;
+    if (!grid) return;
+    const cards = grid.querySelectorAll<HTMLElement>(`.${styles.card}`);
+    cards.forEach((card) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      card.style.setProperty('--my', `${e.clientY - r.top}px`);
+    });
+  };
 
   return (
     <section id="intro" className={styles.intro}>
@@ -79,11 +103,22 @@ const Intro = () => {
           </motion.p>
 
           <motion.div className={styles.actions} variants={item}>
-            <a href="#projects" className={styles.primaryBtn}>
+            <a
+              href="#projects"
+              className={styles.primaryBtn}
+              onPointerMove={handleMagneticMove}
+              onPointerLeave={handleMagneticLeave}
+            >
               <span>View my work</span>
               <FontAwesomeIcon icon={faArrowRight} />
             </a>
-            <a href="/cv-pablo-machado.pdf" download className={styles.secondaryBtn}>
+            <a
+              href="/cv-pablo-machado.pdf"
+              download
+              className={styles.secondaryBtn}
+              onPointerMove={handleMagneticMove}
+              onPointerLeave={handleMagneticLeave}
+            >
               <FontAwesomeIcon icon={faFileArrowDown} />
               <span>Download CV</span>
             </a>
@@ -183,6 +218,8 @@ const Intro = () => {
       {/* ---------- ABOUT / BENTO ---------- */}
       <div id="about" className={`container ${styles.about}`}>
         <motion.div
+          ref={bentoRef}
+          onPointerMove={handleBentoPointerMove}
           className={styles.bento}
           initial="hidden"
           whileInView="visible"
