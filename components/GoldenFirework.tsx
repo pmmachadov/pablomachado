@@ -181,28 +181,29 @@ const GoldenFirework: React.FC = () => {
       let finishY = PAD;
 
       const emitMiniBurst = (bx: number, by: number) => {
-        finishBurstAlpha = 0.85;
+        finishBurstAlpha = 0.92;
         finishX = bx;
         finishY = by;
 
-        for (let i = 0; i < 32; i++) {
+        // Longer-lasting golden willow & glittering embers on final burst
+        for (let i = 0; i < 52; i++) {
           const angle = Math.random() * Math.PI * 2;
-          const speed = 1.1 + Math.random() * 2.6;
+          const speed = 0.8 + Math.random() * 2.9;
           sparks.push({
             x: bx,
             y: by,
             vx: Math.cos(angle) * speed,
-            vy: Math.sin(angle) * speed - 0.3,
-            drag: 0.93,
-            gravity: 0.035,
+            vy: Math.sin(angle) * speed - 0.45,
+            drag: 0.962 + Math.random() * 0.012,
+            gravity: 0.022 + Math.random() * 0.012,
             alpha: 1,
-            decay: 0.028 + Math.random() * 0.018,
-            size: 0.9 + Math.random() * 0.7,
+            decay: 0.0075 + Math.random() * 0.006,
+            size: 1.0 + Math.random() * 0.85,
             color: goldColors[Math.floor(Math.random() * goldColors.length)],
             trail: [{ x: bx, y: by }],
-            maxTrail: 6,
+            maxTrail: 11,
             twinklePhase: Math.random() * Math.PI * 2,
-            twinkleSpeed: 0.35 + Math.random() * 0.25,
+            twinkleSpeed: 0.28 + Math.random() * 0.25,
           });
         }
       };
@@ -364,7 +365,7 @@ const GoldenFirework: React.FC = () => {
           ctx.beginPath();
           ctx.arc(finishX, finishY, 24, 0, Math.PI * 2);
           ctx.fill();
-          finishBurstAlpha *= 0.82;
+          finishBurstAlpha *= 0.91;
         }
 
         // Update & draw sparks
